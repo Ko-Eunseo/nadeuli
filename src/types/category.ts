@@ -1,4 +1,3 @@
-// https://apis.data.go.kr/B551011/KorService1/categoryCode1?numOfRows=10&pageNo=1&MobileOS=WIN&MobileApp=nadeuli&_type=json&serviceKey=p8RnXa51JZxmO1Xsj2aEM92oClUs4SJn4BTL%2F472vCt6iWkMueOSir8KMeh%2BGOthLGbIS7s%2F3eLI0ngArs16mg%3D%3D
 // 서비스분류코드조회
 // endpoint: /categoryCode1
 

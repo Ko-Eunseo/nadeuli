@@ -1,20 +1,21 @@
-import { Selected } from "@/recoil/atoms/selectState";
 import StyledSelectItem from "./styledSelectItem";
 import { OptionhandlerParam } from "@/hooks/useSelect";
 
 interface SelectItemProps {
   option: string;
-  handleSelectChange: ({ label, selectedValue }: OptionhandlerParam) => void;
+  handleSelectChange: ({ id, selectedValue, code }: OptionhandlerParam) => void;
   label: string;
+  code: string;
 }
 const SelectItem = ({
   option,
   handleSelectChange,
   label,
+  code,
   ...rest
 }: SelectItemProps) => {
   const handleClick = () => {
-    handleSelectChange({ label, selectedValue: option });
+    handleSelectChange({ id: label, selectedValue: option, code });
   };
 
   return (

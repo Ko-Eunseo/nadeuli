@@ -6,7 +6,6 @@ export default function Home() {
     <main>
       <div>
         <Main />
-        <div>강아지와 하는 여행</div>
       </div>
     </main>
   );

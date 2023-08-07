@@ -2,10 +2,10 @@ export type RESPONSE_OK = "OK";
 export type RESPONSE_ERROR = "ERROR";
 
 export interface TagType {
-  code?: string;
+  id?: number;
+  code?: string | number;
   name: string;
   rnum?: number;
-  id?: number;
 }
 
 export type LocationBased = "locationBased"; //현재위치기반

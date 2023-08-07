@@ -1,4 +1,4 @@
-// https://apis.data.go.kr/B551011/Durunubi/courseList?MobileOS=WIN&MobileApp=nadeuli&serviceKey=p8RnXa51JZxmO1Xsj2aEM92oClUs4SJn4BTL%2F472vCt6iWkMueOSir8KMeh%2BGOthLGbIS7s%2F3eLI0ngArs16mg%3D%3D&_type=json
+// https://apis.data.go.kr/B551011/Durunubi/courseList?MobileOS=WIN&MobileApp=nadeuli&serviceKey=
 // {
 //     "response": {
 //       "header": {
