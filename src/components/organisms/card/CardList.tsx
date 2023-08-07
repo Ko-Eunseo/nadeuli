@@ -4,14 +4,16 @@ import { ContentType } from "@/types/contentType";
 import { useAreaBasedTourInfo } from "@/hooks/useTourInfo";
 import { getValueFromArr } from "@/utills/getValWithId";
 import { StyledCardList } from "./styled";
+import { Area } from "@/types/area";
 
 interface CardListProps {
   selection: Selected[];
 }
 const CardList = ({ selection }: CardListProps) => {
-  const contentTypeId = getValueFromArr(selection, "what");
+  const contentTypeId = getValueFromArr(selection, "what") as ContentType["id"];
+  const areaCode = getValueFromArr(selection, "where") as Area["code"];
 
-  const { data, isLoading } = useAreaBasedTourInfo();
+  const { data, isLoading } = useAreaBasedTourInfo({ areaCode, contentTypeId });
 
   const cardData = data?.response?.body?.items?.item || [];
 

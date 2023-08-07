@@ -33,6 +33,7 @@ const useSelect = (): UseSelect => {
         updatedSelected[labelIndex] = {
           ...prevSelected[labelIndex],
           value: selectedValue,
+          code,
         };
         return updatedSelected;
       } else {

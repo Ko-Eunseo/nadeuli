@@ -8,16 +8,16 @@ import {
 } from "@/types/apiParams";
 import { useQuery } from "@tanstack/react-query";
 
-export const useAreaBasedTourInfo = () =>
-  //   {
-  //   areaCode,
-  // }: Partial<AreaBasedParams>
-  {
-    return useQuery({
-      queryKey: ["/areaBasedList1"],
-      queryFn: () => getTourInfo("/areaBasedList1"),
-    });
-  };
+export const useAreaBasedTourInfo = ({
+  areaCode,
+  contentTypeId,
+}: Partial<AreaBasedParams>) => {
+  const params = { service: "/areaBasedList1", areaCode, contentTypeId };
+  return useQuery({
+    queryKey: ["/areaBasedList1"],
+    queryFn: () => getTourInfo(params),
+  });
+};
 
 export const useFestivalInfo = ({
   eventStartDate,

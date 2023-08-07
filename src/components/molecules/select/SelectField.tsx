@@ -33,9 +33,7 @@ const SelectField = ({
             handleSelectChange={handleSelectChange}
             label={label}
             code={
-              selectionOption.code !== undefined
-                ? (selectionOption.code as string)
-                : String(selectionOption.id)
+              (selectionOption.code as string) || String(selectionOption.id)
             }
           />
         )}
@@ -47,11 +45,7 @@ const SelectField = ({
                 option={option.name}
                 handleSelectChange={handleSelectChange}
                 label={label}
-                code={
-                  option.code !== undefined
-                    ? (option.code as string)
-                    : String(option.id)
-                }
+                code={(option?.code as string) || String(option?.id)}
                 {...rest}
               />
             );

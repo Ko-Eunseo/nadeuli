@@ -21,7 +21,6 @@ export interface CardData {
 }
 
 const Card = ({ data }: CardProps) => {
-  // console.log(data);
   const { addr1, areacode, firstimage, title } = data;
   // 이미지 swipe
   return (
