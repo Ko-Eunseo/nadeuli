@@ -17,7 +17,6 @@ interface TourCourse {
   id: 25;
   name: "여행코스";
 }
-// 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점
 interface Leisure {
   id: 28;
   name: "레포츠";

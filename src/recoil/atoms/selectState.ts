@@ -1,7 +1,13 @@
 import { atom } from "recoil";
 
+// export interface Selected {
+//   [label: string]: string;
+// }
+
 export interface Selected {
-  [label: string]: string;
+  id: string; //label
+  value: string;
+  code: number | string;
 }
 
 export const selectState = atom<Selected[]>({

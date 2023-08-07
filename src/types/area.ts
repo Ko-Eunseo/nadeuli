@@ -1,4 +1,3 @@
-// https://apis.data.go.kr/B551011/KorService1/areaCode1?MobileOS=WIN&MobileApp=nadeuli&_type=json&serviceKey=p8RnXa51JZxmO1Xsj2aEM92oClUs4SJn4BTL%2F472vCt6iWkMueOSir8KMeh%2BGOthLGbIS7s%2F3eLI0ngArs16mg%3D%3D
 // 지역코드조회: 지역코드목록을 지역,시군구,읍면동 코드목록을 조회하는 기능
 // endpoint: /areaCode1
 interface Seoul {

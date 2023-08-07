@@ -9,7 +9,7 @@ interface SelectFieldProps {
   label: string;
   isOpen: boolean;
   selection: Selected[];
-  handleSelectChange: ({ label, selectedValue }: OptionhandlerParam) => void;
+  handleSelectChange: ({ id, selectedValue, code }: OptionhandlerParam) => void;
 }
 
 const SelectField = ({
@@ -20,9 +20,8 @@ const SelectField = ({
   handleSelectChange,
   ...rest
 }: SelectFieldProps) => {
-  const selectedValue = selection.find(
-    (selected) => selected[label] !== undefined
-  )?.[label];
+  const selectionOption = selection.find((selected) => selected.id === label);
+  const selectedValue = selectionOption?.value;
 
   return (
     <>
@@ -30,22 +29,33 @@ const SelectField = ({
       <StyledSelect overflow={isOpen ? "visible" : "hidden"}>
         {selectedValue && (
           <SelectItem
-            option={selectedValue}
+            option={selectionOption.value}
             handleSelectChange={handleSelectChange}
             label={label}
+            code={
+              selectionOption.code !== undefined
+                ? (selectionOption.code as string)
+                : String(selectionOption.id)
+            }
           />
         )}
-        {options.map((option: TagType, i) => {
-          return (
-            <SelectItem
-              key={option?.id || option?.code}
-              option={option?.name}
-              handleSelectChange={handleSelectChange}
-              label={label}
-              {...rest}
-            />
-          );
-        })}
+        {options &&
+          options.map((option: TagType, i) => {
+            return (
+              <SelectItem
+                key={i}
+                option={option.name}
+                handleSelectChange={handleSelectChange}
+                label={label}
+                code={
+                  option.code !== undefined
+                    ? (option.code as string)
+                    : String(option.id)
+                }
+                {...rest}
+              />
+            );
+          })}
       </StyledSelect>
     </>
   );

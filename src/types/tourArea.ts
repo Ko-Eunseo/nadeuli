@@ -4,10 +4,6 @@ import { Category } from "./category";
 // 지역기반 관광정보 조회
 // endpoint: /areaBasedList1
 
-export interface AreaBasedParams {
-  contentTypeId: ContentType["id"];
-  areaCode: Area["code"];
-}
 export interface AreaT {
   addr1: string;
   addr2: string;
