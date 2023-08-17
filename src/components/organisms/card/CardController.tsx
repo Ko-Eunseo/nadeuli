@@ -7,8 +7,7 @@ interface CardControllerProps {
 }
 
 const CardController = ({ contentTypeId, cardData }: CardControllerProps) => {
-  // 카드에 필요한 데이터
-  // 1. 사진 2. 지역명, 3. 장소명,
+  // onClick시 useDetailInfo를 가진 card
   return cardData.map((el, i) => {
     return <Card key={i} data={el} />;
   });

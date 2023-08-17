@@ -1,11 +1,16 @@
 import { Area } from "./area";
 import { ContentType } from "./contentType";
+import { Endpoint } from "./endPoint";
 
-export interface AreaParams {
+interface BasicParams {
+  endpoint?: Endpoint["endpoint"];
+}
+
+export interface AreaParams extends BasicParams {
   service: string;
   areaCode?: Area["code"];
 }
-export interface CategoryParams {
+export interface CategoryParams extends BasicParams {
   service: string;
   contentTypeId?: ContentType["id"];
 }
@@ -24,6 +29,11 @@ export interface SearchKeywordParams extends CategoryParams {
 
 export interface SearchFestivalParams extends AreaParams {
   eventStartDate: string; //YYYYMMDD
+}
+
+export interface LocationParams extends CategoryParams {
+  mapX: number;
+  mapY: number;
 }
 
 export type URL_TYPE =

@@ -2,7 +2,7 @@ export type RESPONSE_OK = "OK";
 export type RESPONSE_ERROR = "ERROR";
 
 export interface TagType {
-  id?: number;
+  id?: number | string;
   code?: string | number;
   name: string;
   rnum?: number;
