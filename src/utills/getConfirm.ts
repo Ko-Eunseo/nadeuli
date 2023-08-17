@@ -1,7 +1,8 @@
 const getConfirm = (callback: Function, info: string) => {
   if (window.confirm(info)) {
-    return callback;
+    callback();
   }
+  return;
 };
 
 export default getConfirm;

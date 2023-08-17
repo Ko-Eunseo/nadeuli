@@ -7,6 +7,7 @@ import { HorizontalCardList, OverFlowHidden } from "../organisms/card/styled";
 import GeolocationBtn from "../molecules/button/GeolocationBtn";
 import useCurTour from "@/hooks/useCurTour";
 import useArea from "@/hooks/useArea";
+import getConfirm from "@/utills/getConfirm";
 
 const LocationSection = () => {
   const { courseData, curAreaCode, refethPosition } = useCurTour();
@@ -18,7 +19,10 @@ const LocationSection = () => {
   })?.name;
 
   const clickLocationBtn = () => {
-    refethPosition();
+    getConfirm(
+      refethPosition,
+      "유저 위치를 공유하겠습니까? 위치기반 여행코스를 제공합니다."
+    );
   };
 
   return (
