@@ -32,6 +32,7 @@ const Card = ({ data }: CardProps) => {
           width={200}
           height={200}
           style={{ borderRadius: "0.5rem 0.5rem 0 0" }}
+          priority //LCP(Largest Contentful Paint)
         />
       ) : (
         <DefaultImg />
