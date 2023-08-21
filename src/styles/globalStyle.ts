@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { colors } from "./colors";
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -8,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     width: 100%;
     height: 100%;
+    background-color: ${colors.background};
   }
   
   #root {
@@ -21,10 +23,6 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-
-  /* body, button {
-    font-family: -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  } */
   
   button {
     cursor: pointer;

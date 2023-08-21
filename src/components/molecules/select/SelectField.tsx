@@ -7,6 +7,7 @@ import { OptionhandlerParam } from "@/hooks/useSelect";
 interface SelectFieldProps {
   options: TagType[];
   label: string;
+  kLabel: string;
   isOpen: boolean;
   selection: Selected[];
   handleSelectChange: ({ id, selectedValue, code }: OptionhandlerParam) => void;
@@ -14,6 +15,7 @@ interface SelectFieldProps {
 
 const SelectField = ({
   label,
+  kLabel,
   options,
   isOpen = false,
   selection,
@@ -27,7 +29,7 @@ const SelectField = ({
     <>
       <Label>{label}</Label>
       <StyledSelect overflow={isOpen ? "visible" : "hidden"}>
-        {selectedValue && (
+        {selectedValue ? (
           <SelectItem
             option={selectionOption.value}
             handleSelectChange={handleSelectChange}
@@ -35,6 +37,13 @@ const SelectField = ({
             code={
               (selectionOption.code as string) || String(selectionOption.id)
             }
+          />
+        ) : (
+          <SelectItem
+            option={kLabel}
+            handleSelectChange={handleSelectChange}
+            label={label}
+            code={label}
           />
         )}
         {options &&
