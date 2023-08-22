@@ -1,6 +1,9 @@
 import { colors } from "@/styles/colors";
 import { styled } from "styled-components";
 
+//contentType: pink;
+//area: green;
+//before select: gray;
 export const StyledCustomSelect = styled.div`
   display: inline-block;
   position: relative;

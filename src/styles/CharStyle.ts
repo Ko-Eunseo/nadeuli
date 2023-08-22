@@ -1,6 +1,7 @@
 export interface CharProps {
   size: keyof typeof sizes;
   weight: keyof typeof weights;
+  font?: string;
 }
 
 export const sizes: { [key: string]: string } = {
@@ -9,6 +10,7 @@ export const sizes: { [key: string]: string } = {
   md: "16px",
   lg: "24px",
   xl: "32px",
+  display: "64px",
 };
 
 export const weights: { [key: string]: number } = {

@@ -1,3 +1,5 @@
+import { colors } from "@/styles/colors";
+
 export type RESPONSE_OK = "OK";
 export type RESPONSE_ERROR = "ERROR";
 
@@ -6,6 +8,17 @@ export interface TagType {
   code?: string | number;
   name: string;
   rnum?: number;
+}
+export interface OptionhandlerParam {
+  id: string;
+  selectedValue: string;
+  code: number | string;
+}
+export interface SelectTagType {
+  label: string;
+  name: TagType["name"];
+  code: TagType["code"];
+  bg: keyof typeof colors;
 }
 
 export type LocationBased = "locationBased"; //현재위치기반

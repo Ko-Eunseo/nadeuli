@@ -7,9 +7,10 @@ import { TagType } from "@/types/type";
 interface SelectOptios {
   optionList: TagType[];
   label: string;
+  kLabel: string;
 }
 
-const CustomSelect = ({ optionList, label }: SelectOptios) => {
+const CustomSelect = ({ optionList, label, kLabel }: SelectOptios) => {
   const { isOpen, openOptions, selection, handleSelectChange } = useSelect();
 
   return (
@@ -23,6 +24,7 @@ const CustomSelect = ({ optionList, label }: SelectOptios) => {
         </SelectIcon>
         <SelectField
           label={label}
+          kLabel={kLabel}
           options={optionList}
           isOpen={isOpen}
           selection={selection}

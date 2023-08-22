@@ -9,4 +9,5 @@ interface StyledCharProps {
 export const StyledChar = styled.p<StyledCharProps>`
   font-size: ${({ fontSize }) => fontSize || sizes.md};
   font-weight: ${({ fontWeight }) => fontWeight || weights.base};
+  margin: 0.5rem;
 `;
