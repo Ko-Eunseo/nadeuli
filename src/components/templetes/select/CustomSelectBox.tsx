@@ -10,16 +10,19 @@ import { Arrow, SelectBox, SelectComment } from "../styles";
 import CustomTags from "./CustomTags";
 import { BsFillTriangleFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import useDrag from "@/hooks/useDrag";
 
 const CustomSelectBox = () => {
   const { data: location, isLoading: locationIsLoading } = useArea({});
+  const { handleDrop, handleDragOver } = useDrag();
 
   const locations = location?.response?.body?.items?.item || [];
+
   return (
     <>
       <SelectBox>
         <SelectComment>나는</SelectComment>
-        <Box>
+        <Box onDrop={handleDrop} onDragOver={handleDragOver}>
           <CustomSelect label="who" kLabel="누구와" optionList={mates} />
           <CustomSelect label="where" kLabel="어디서" optionList={locations} />
           <CustomSelect label="what" kLabel="어떤" optionList={contentTypes} />

@@ -1,25 +1,21 @@
 import Tag from "@/components/atoms/tags/Tag";
-import { TagType } from "@/types/type";
-import { colors } from "@/styles/colors";
+import { SelectTagType } from "@/types/type";
 import useSelect from "@/hooks/useSelect";
 import { SelectTag } from "./styles";
+import useDrag from "@/hooks/useDrag";
 
-interface SelectTag {
-  label: string;
-  name: TagType["name"];
-  code: TagType["code"];
-  bg: keyof typeof colors;
-}
+const SelectTagItem = ({ label, name, code = "", bg }: SelectTagType) => {
+  const { handleDragStart } = useDrag();
 
-const SelectTagItem = ({ label, name, code = "", bg }: SelectTag) => {
   const { handleSelectChange } = useSelect();
+  const selectedVal = { id: label, selectedValue: name, code };
   const handleClick = () => {
-    handleSelectChange({ id: label, selectedValue: name, code });
+    handleSelectChange(selectedVal);
   };
 
   return (
     <>
-      <SelectTag draggable>
+      <SelectTag draggable onDragStart={(e) => handleDragStart(e, selectedVal)}>
         <Tag name={name} bg={bg} onClick={handleClick} />
       </SelectTag>
     </>

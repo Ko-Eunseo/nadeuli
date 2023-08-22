@@ -1,12 +1,8 @@
 import { Selected, selectState } from "@/recoil/atoms/selectState";
+import { OptionhandlerParam } from "@/types/type";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 
-export interface OptionhandlerParam {
-  id: string;
-  selectedValue: string;
-  code: number | string;
-}
 interface UseSelect {
   isOpen: boolean;
   openOptions: () => void;

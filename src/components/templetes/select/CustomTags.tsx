@@ -11,7 +11,6 @@ interface CustomTagType {
 }
 
 const CustomTags = ({ locations, contentTypes, mates }: CustomTagType) => {
-  //@todo: tag click & drag event: select item 지정
   const renderTag = (
     data: TagType[],
     label: string,
