@@ -5,18 +5,27 @@ import useArea from "@/hooks/useArea";
 import { contentTypes } from "@/variables/contentType";
 import { mates } from "@/variables/mate";
 import CustomSelect from "../../organisms/selectForm/CustomSelect";
-import { Box } from "../../atoms/styles";
+import { Box, CenterBox } from "../../atoms/styles";
 import { Arrow, SelectBox, SelectComment } from "../styles";
 import CustomTags from "./CustomTags";
 import { BsFillTriangleFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import useDrag from "@/hooks/useDrag";
+import Button from "@/components/atoms/buttons/basicBtn/Button";
 
-const CustomSelectBox = () => {
+const CustomSelectBox = ({
+  setisSelect,
+}: {
+  setisSelect: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { data: location, isLoading: locationIsLoading } = useArea({});
   const { handleDrop, handleDragOver } = useDrag();
 
   const locations = location?.response?.body?.items?.item || [];
+
+  const getSelectTour = () => {
+    setisSelect(true);
+  };
 
   return (
     <>
@@ -29,11 +38,15 @@ const CustomSelectBox = () => {
         </Box>
         <SelectComment>여행을 할 거예요!</SelectComment>
       </SelectBox>
+
       <CustomTags
         locations={locations}
         contentTypes={contentTypes}
         mates={mates}
       />
+      <CenterBox>
+        <Button bg="red" label="Go!" onClick={getSelectTour} />
+      </CenterBox>
       <Arrow>
         <IconContext.Provider value={{ color: "white", size: "3rem" }}>
           <BsFillTriangleFill />

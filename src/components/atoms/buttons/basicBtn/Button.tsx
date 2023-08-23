@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const Button = ({ bg = "green", label, onClick, ...rest }: ButtonProps) => {
   return (
-    <StyledButton backgroundColor={colors[bg]} onClick={onClick} {...rest}>
+    <StyledButton $bg={colors[bg]} onClick={onClick} {...rest}>
       {label}
     </StyledButton>
   );

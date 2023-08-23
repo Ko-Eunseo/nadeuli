@@ -19,6 +19,7 @@ export const BGImage = styled.div`
   background-image: url(${billboard.src});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   margin-bottom: 3rem;
 `;
 
