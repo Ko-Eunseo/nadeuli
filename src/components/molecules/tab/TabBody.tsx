@@ -1,16 +1,17 @@
-import Course from "@/components/templetes/course/Course";
 import { StyledTabBody, StyledTabBox } from "./styles";
 import { Cat2List } from "@/variables/courseCategory";
-import { Area } from "@/types/area";
+import Char from "@/components/atoms/texts/Character";
+import CardController from "@/components/organisms/card/CardController";
+import { CardWrapper } from "../card/styledCard";
 
 const TabBody = ({
-  areaCode,
   curTab,
   tabCategory,
+  cardData,
 }: {
-  areaCode: Area["code"];
   curTab: string;
-  tabCategory: Cat2List;
+  tabCategory: Cat2List; //@todo: 추상화하기
+  cardData: any;
 }) => {
   return (
     <>
@@ -18,13 +19,12 @@ const TabBody = ({
         {tabCategory.map(({ code, name, label }) => {
           return (
             <StyledTabBox active={curTab === code} key={code}>
-              <Course
-                key={code}
-                name={name}
-                code={code}
-                label={label}
-                areaCode={areaCode}
-              />
+              <Char size="md" weight="bold">
+                {label}
+              </Char>
+              <CardWrapper>
+                <CardController cardData={cardData} />
+              </CardWrapper>
             </StyledTabBox>
           );
         })}
