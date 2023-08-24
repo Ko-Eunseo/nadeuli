@@ -6,4 +6,10 @@ export const StyledCard = styled.div`
   border: 1px solid ${colors.gray};
   border-radius: 0.5rem;
   margin: 0.5rem;
+  background-color: #ffffff;
+`;
+
+export const CardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;

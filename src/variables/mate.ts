@@ -7,18 +7,13 @@ interface Mate {
 
 const normal: Mate = {
   id: "/KorService1",
-  name: "친구, 부모님",
+  name: "가족",
 };
 
 const kid: Mate = {
   id: "/KorWithService1",
-  name: "영유아, 장애",
+  name: "무장애",
 };
-
-// const pet: Mate = {
-//   id: "/KorService1",
-//   name: "반려동물",
-// };
 
 export const mates = [
   normal,
@@ -26,4 +21,13 @@ export const mates = [
   // pet
 ];
 
-// pet은 true:contentId 필요, false밖에 못받음.
+export const courseMates = [
+  {
+    code: "C0112",
+    name: "가족과",
+  },
+  {
+    code: "C0113",
+    name: "혼자서",
+  },
+];

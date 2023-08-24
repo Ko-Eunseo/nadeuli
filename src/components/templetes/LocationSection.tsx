@@ -32,7 +32,7 @@ const LocationSection = () => {
         <GeolocationBtn onClick={clickLocationBtn} />
       </Char>
       <HorizontalCardList>
-        <CardController contentTypeId={25} cardData={courseData} />
+        <CardController cardData={courseData} />
         {courseData.length === 0 && (
           <Char size="sm" weight="mid">
             현재 해당 위치의 여행코스 데이터가 없습니다.

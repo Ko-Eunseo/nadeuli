@@ -1,8 +1,9 @@
 import { getDetail } from "@/api/getDetail";
 import { getLocationTour } from "@/api/getLocationT";
 import { getFestival } from "@/api/getSearch";
-import { getTourInfo } from "@/api/getTourInfo";
+import { getCourseTourInfo, getTourInfo } from "@/api/getTourInfo";
 import {
+  AreaBasedCourseParams,
   AreaBasedParams,
   DetailInfoParams,
   LocationParams,
@@ -24,6 +25,22 @@ export const useAreaBasedTourInfo = ({
   return useQuery({
     queryKey: ["/areaBasedList1"],
     queryFn: () => getTourInfo(params),
+  });
+};
+
+export const useThemeCourseTour = ({
+  service,
+  areaCode = "1",
+  cat2,
+}: Partial<AreaBasedCourseParams>) => {
+  const params = {
+    service: "/areaBasedList1",
+    areaCode,
+    cat2,
+  };
+  return useQuery({
+    queryKey: ["/areaBasedList1", cat2],
+    queryFn: () => getCourseTourInfo(params),
   });
 };
 

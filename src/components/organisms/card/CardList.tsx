@@ -24,10 +24,7 @@ const CardList = ({ selection }: CardListProps) => {
 
   return (
     <StyledCardList>
-      <CardController
-        contentTypeId={contentTypeId as ContentType["id"]}
-        cardData={cardData}
-      />
+      <CardController cardData={cardData} />
     </StyledCardList>
   );
 };
