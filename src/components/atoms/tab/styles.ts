@@ -12,10 +12,6 @@ export const StyledTabItem = styled.a`
   &:active {
     opacity: 1;
   }
-
-  @media (max-width: 800px) {
-    padding: 1rem 0.4rem;
-  }
 `;
 
 export const StyledTabItemLi = styled.li<{ $active: boolean }>`
@@ -37,5 +33,9 @@ export const StyledTabItemLi = styled.li<{ $active: boolean }>`
     &::after {
       display: none;
     }
+  }
+
+  @media (max-width: 500px) {
+    padding: 0.5rem;
   }
 `;

@@ -9,22 +9,13 @@ export const StyledTabHead = styled.nav`
   margin: 0 auto;
   padding: 0 1rem;
 
-  @media (max-width: 800px) {
-    overflow-x: scroll;
-    position: absolute;
-
-    &::-webkit-scrollbar {
-      background: transparent;
-    }
-  }
-
-  @media (max-width: 700px) {
-    width: 100%;
+  @media (max-width: 500px) {
+    border-radius: 0;
+    padding: 0;
   }
 `;
 
 export const StyledTabBody = styled.div`
-  /* background-color: ${colors.yellow}; */
   padding: 1rem;
   min-height: 80vh;
   min-width: 90vw;
