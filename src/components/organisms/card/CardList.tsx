@@ -6,6 +6,7 @@ import { getValueFromArr } from "@/utills/getValWithId";
 import { StyledCardList } from "./styled";
 import { Area } from "@/types/area";
 import { Endpoint } from "@/types/endPoint";
+import { CardGrid } from "@/components/molecules/card/styledCard";
 
 interface CardListProps {
   selection: Selected[];
@@ -23,9 +24,9 @@ const CardList = ({ selection }: CardListProps) => {
   const cardData = data?.response?.body?.items?.item || [];
 
   return (
-    <StyledCardList>
+    <CardGrid>
       <CardController cardData={cardData} />
-    </StyledCardList>
+    </CardGrid>
   );
 };
 

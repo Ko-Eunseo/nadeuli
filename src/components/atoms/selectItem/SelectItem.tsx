@@ -1,5 +1,5 @@
+import { OptionhandlerParam } from "@/types/type";
 import StyledSelectItem from "./styledSelectItem";
-import { OptionhandlerParam } from "@/hooks/useSelect";
 
 interface SelectItemProps {
   option: string;

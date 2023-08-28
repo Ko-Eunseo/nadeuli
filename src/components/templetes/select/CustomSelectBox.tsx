@@ -12,6 +12,7 @@ import { BsFillTriangleFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import useDrag from "@/hooks/useDrag";
 import Button from "@/components/atoms/buttons/basicBtn/Button";
+import { colors } from "@/styles/colors";
 
 const CustomSelectBox = ({
   setisSelect,
@@ -48,7 +49,9 @@ const CustomSelectBox = ({
         <Button bg="red" label="Go!" onClick={getSelectTour} />
       </CenterBox>
       <Arrow>
-        <IconContext.Provider value={{ color: "white", size: "3rem" }}>
+        <IconContext.Provider
+          value={{ color: `${colors.background}`, size: "3rem" }}
+        >
           <BsFillTriangleFill />
         </IconContext.Provider>
       </Arrow>

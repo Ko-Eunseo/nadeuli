@@ -13,7 +13,7 @@ const TabHead = ({
 }) => {
   return (
     <StyledTabHead>
-      {tabList?.map(({ code, name, label }) => {
+      {tabList?.map(({ code, name, label, icon }) => {
         return (
           <TabItem
             key={code}
@@ -21,6 +21,7 @@ const TabHead = ({
             label={name}
             setCurTab={setCurTab}
             curTab={curTab}
+            Icon={icon}
           />
         );
       })}

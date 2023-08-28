@@ -7,6 +7,7 @@ const StyledTag = styled.div<{ $bg?: keyof typeof colors }>`
   margin-right: 0.2rem;
   background-color: ${({ $bg }) => ($bg ? colors[$bg] : colors.background)};
   border-radius: 0.5rem;
+  color: #ffffff;
 `;
 
 export default StyledTag;

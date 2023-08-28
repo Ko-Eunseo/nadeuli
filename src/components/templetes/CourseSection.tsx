@@ -10,9 +10,9 @@ const CourseSection = () => {
   const areaCode = getValueFromArr(selection, "where") as Area["code"];
 
   return (
-    <section>
+    <>
       <Tab areaCode={areaCode} tabList={cat2} />
-    </section>
+    </>
   );
 };
 

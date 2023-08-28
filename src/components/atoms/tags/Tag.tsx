@@ -12,7 +12,7 @@ const Tag = ({ name, bg = "green", onClick }: TagProps) => {
   // props와 property를 구분하기 위해 $접두사 추가
   return (
     <StyledTag onClick={onClick} $bg={bg}>
-      <Char size={"md"} weight={"mid"}>
+      <Char size={"sm"} weight={"mid"}>
         {name}
       </Char>
     </StyledTag>

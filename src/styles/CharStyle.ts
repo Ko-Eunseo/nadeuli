@@ -9,8 +9,8 @@ export const sizes: { [key: string]: string } = {
   sm: "14px",
   md: "16px",
   lg: "24px",
-  xl: "32px",
-  display: "64px",
+  xl: "28px",
+  display: "32px",
 };
 
 export const weights: { [key: string]: number } = {

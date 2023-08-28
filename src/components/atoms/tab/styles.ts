@@ -1,42 +1,41 @@
-import { colors } from "@/styles/colors";
+import { sizes } from "@/styles/CharStyle";
 import { styled } from "styled-components";
 
 export const StyledTabItem = styled.a`
-  cursor: pointer;
   text-decoration: none;
   color: white;
-  padding: 1rem;
+  margin-top: 0.2rem;
   text-align: center;
+  font-size: ${sizes.xs};
+
   &:hover,
   &:active {
-    color: black;
+    opacity: 1;
+  }
+
+  @media (max-width: 800px) {
+    padding: 1rem 0.4rem;
   }
 `;
 
-export const StyledTabItemLi = styled.li<{ active: boolean }>`
-  list-style: none;
-  margin: 1rem 1rem 0;
+export const StyledTabItemLi = styled.li<{ $active: boolean }>`
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 1rem;
-  position: relative;
-  background-color: ${colors.yellow};
-  border-radius: 0.5rem 0 0;
-  opacity: ${({ active }) => (active ? "1" : "0.6")};
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    background-color: ${colors.yellow};
-    width: 50%;
-    height: 100%;
-    transform: translate(150%, 0) skew(30deg);
-    border-radius: 0 1rem;
-  }
+  opacity: ${({ $active }) => ($active ? "1" : "0.6")};
 
   &:hover {
     opacity: 1;
+    scale: calc(1.1);
+  }
+
+  @media (max-width: 1000px) {
+    margin-right: 0;
+    margin: 0;
+    &::after {
+      display: none;
+    }
   }
 `;
