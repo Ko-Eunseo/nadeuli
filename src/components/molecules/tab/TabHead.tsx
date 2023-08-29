@@ -1,13 +1,13 @@
 import TabItem from "@/components/atoms/tab/tabItem";
-import { Cat2List } from "@/variables/courseCategory";
 import { StyledTabHead } from "./styles";
+import { TabType } from "@/types/type";
 
 const TabHead = ({
   tabList,
   setCurTab,
   curTab,
 }: {
-  tabList: Cat2List; //@todo: 추상화하기
+  tabList: TabType[];
   setCurTab: React.Dispatch<React.SetStateAction<string>>;
   curTab: string;
 }) => {

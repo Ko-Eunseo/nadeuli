@@ -7,13 +7,18 @@ import {
   MdFoodBank,
 } from "react-icons/md";
 
-export const icons: { name: string; icon: IconType }[] = [
+export interface iconType {
+  name: string;
+  icon: IconType;
+}
+
+export const icons: iconType[] = [
   {
-    name: "가족여행",
+    name: "가족코스",
     icon: GiFamilyHouse,
   },
   {
-    name: "혼자여행",
+    name: "나홀로코스",
     icon: MdCardTravel,
   },
   {

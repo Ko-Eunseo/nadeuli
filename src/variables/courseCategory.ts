@@ -26,7 +26,7 @@ export const cat2: Cat2List = [
   },
   {
     code: "C0113",
-    label: "혼자 떠나는 여행",
+    label: "혼자 떠나요",
     name: "혼자여행",
     icon: MdCardTravel,
   },
@@ -38,13 +38,13 @@ export const cat2: Cat2List = [
   },
   {
     code: "C0115",
-    label: "뚜벅뚜벅 걸어서 하는 여행",
+    label: "뚜벅뚜벅 걸어요",
     name: "도보코스",
     icon: MdOutlineDirectionsWalk,
   },
   {
     code: "C0116",
-    label: "캠퍼 모여라!",
+    label: "별보러갈래?",
     name: "캠핑코스",
     icon: GiCampingTent,
   },

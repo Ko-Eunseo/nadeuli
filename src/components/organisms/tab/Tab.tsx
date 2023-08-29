@@ -1,20 +1,24 @@
 import TabBody from "@/components/molecules/tab/TabBody";
 import TabHead from "@/components/molecules/tab/TabHead";
-import { useState } from "react";
 import { StyledTab } from "./styles";
-import { Cat2List } from "@/variables/courseCategory";
 import { Area } from "@/types/area";
 import { useThemeCourseTour } from "@/hooks/useTourInfo";
 import { Cat2 } from "@/types/course";
+import { TabType } from "@/types/type";
 
 const Tab = ({
   areaCode,
   tabList,
+  tabState,
 }: {
   areaCode: Area["code"];
-  tabList: Cat2List; //@todo: 추상화하기
+  tabList: TabType[];
+  tabState: {
+    setCurTab: React.Dispatch<React.SetStateAction<string>>;
+    curTab: string;
+  };
 }) => {
-  const [curTab, setCurTab] = useState("C0112");
+  const { setCurTab, curTab } = tabState;
 
   const { data, isLoading } = useThemeCourseTour({
     areaCode: areaCode || 1,
