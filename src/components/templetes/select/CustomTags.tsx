@@ -1,4 +1,3 @@
-import Tag from "@/components/atoms/tags/Tag";
 import { TagType } from "@/types/type";
 import { TagBox, TagList } from "../styles";
 import { colors } from "@/styles/colors";
@@ -32,9 +31,9 @@ const CustomTags = ({ locations, contentTypes, mates }: CustomTagType) => {
   return (
     <TagBox>
       <TagList>
-        {renderTag(mates, "who", "yellow")}
-        {renderTag(locations, "where", "green")}
-        {renderTag(contentTypes, "what", "pink")}
+        {mates && renderTag(mates, "who", "yellow")}
+        {locations && renderTag(locations, "where", "green")}
+        {contentTypes && renderTag(contentTypes, "what", "pink")}
       </TagList>
     </TagBox>
   );

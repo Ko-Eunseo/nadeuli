@@ -1,7 +1,8 @@
-import { Selected, selectState } from "@/recoil/atoms/selectState";
+import { Selected } from "@/recoil/atoms/selectState";
 import { OptionhandlerParam } from "@/types/type";
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { selectOptionSelector } from "@/recoil/selectors/selectOptionSelector";
 
 interface UseSelect {
   isOpen: boolean;
@@ -15,7 +16,8 @@ const useSelect = (): UseSelect => {
     setIsOpen(!isOpen);
   };
 
-  const [selection, setSelection] = useRecoilState<Selected[]>(selectState);
+  const setSelection = useSetRecoilState(selectOptionSelector);
+  const selection = useRecoilValue(selectOptionSelector);
   const handleSelectChange = ({
     id,
     selectedValue,

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import useArea from "@/hooks/useArea";
 import { contentTypes } from "@/variables/contentType";
 import { mates } from "@/variables/mate";
 import CustomSelect from "../../organisms/selectForm/CustomSelect";
@@ -13,16 +12,17 @@ import { IconContext } from "react-icons";
 import useDrag from "@/hooks/useDrag";
 import Button from "@/components/atoms/buttons/basicBtn/Button";
 import { colors } from "@/styles/colors";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { areaSelector } from "@/recoil/selectors/areaSelector";
+import { Area } from "@/types/area";
 
 const CustomSelectBox = ({
   setisSelect,
 }: {
   setisSelect: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { data: location, isLoading: locationIsLoading } = useArea({});
   const { handleDrop, handleDragOver } = useDrag();
-
-  const locations = location?.response?.body?.items?.item || [];
+  const [locations] = useRecoilState<Area[]>(areaSelector);
 
   const getSelectTour = () => {
     setisSelect(true);
@@ -39,7 +39,6 @@ const CustomSelectBox = ({
         </Box>
         <SelectComment>여행을 할 거예요!</SelectComment>
       </SelectBox>
-
       <CustomTags
         locations={locations}
         contentTypes={contentTypes}

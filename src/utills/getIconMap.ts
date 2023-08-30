@@ -1,20 +1,17 @@
 import { TabType } from "@/types/type";
 import { iconType } from "@/variables/icons";
-import { UseQueryResult } from "@tanstack/react-query";
 
 export function combineCategoriesWithIcons({
-  callback,
+  category,
   icons,
 }: {
-  callback: () => UseQueryResult<any, unknown>;
+  category: TabType[];
   icons: iconType[];
-}): TabType[] {
-  const { data } = callback();
-  const categories = data?.response?.body?.items?.item || [];
-  return categories?.map((category: TabType) => {
-    const matchedIcon = icons.find((icon) => icon.name === category.name);
+}) {
+  return category?.map((cat: TabType) => {
+    const matchedIcon = icons.find((icon) => icon.name === cat.name);
     return {
-      ...category,
+      ...cat,
       icon: matchedIcon ? matchedIcon.icon : null,
     };
   });
