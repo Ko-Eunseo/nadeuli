@@ -3,7 +3,6 @@ import { Selected } from "@/recoil/atoms/selectState";
 import { ContentType } from "@/types/contentType";
 import { useAreaBasedTourInfo } from "@/hooks/useTourInfo";
 import { getValueFromArr } from "@/utills/getValWithId";
-import { StyledCardList } from "./styled";
 import { Area } from "@/types/area";
 import { Endpoint } from "@/types/endPoint";
 import { CardGrid } from "@/components/molecules/card/styledCard";

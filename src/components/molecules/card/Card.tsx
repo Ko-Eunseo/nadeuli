@@ -2,6 +2,7 @@ import ContentBox from "@/components/atoms/content/ContentBox";
 import { StyledCard } from "./styledCard";
 import Image from "next/image";
 import DefaultImg from "@/components/atoms/content/DefaultImg";
+import useModal from "@/hooks/useModal";
 
 interface CardProps {
   data: CardData;
@@ -10,21 +11,22 @@ interface CardProps {
 export interface CardData {
   addr1: string;
   areacode: number;
-  contentId: string;
-  contentTypeId: string;
+  contentid: string;
+  contenttypeid: string;
   firstimage: string;
   title: string;
-  // firstImage2: string;
-  // mapx: string;
-  // mapy: string;
-  // mlevel: string;
 }
 
 const Card = ({ data }: CardProps) => {
-  const { addr1, areacode, firstimage, title } = data;
-  // 이미지 swipe
+  const { addr1, areacode, firstimage, title, contentid, contenttypeid } = data;
+  const { openModal, detailInfo } = useModal();
+
   return (
-    <StyledCard>
+    <StyledCard
+      onClick={() =>
+        openModal({ contentId: contentid, contentTypeId: contenttypeid })
+      }
+    >
       {firstimage ? (
         <Image
           src={firstimage}

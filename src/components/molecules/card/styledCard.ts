@@ -12,7 +12,7 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 `;
 
 export const CardGrid = styled.div`
@@ -37,4 +37,17 @@ export const CardGrid = styled.div`
   @media (min-width: 1280px) {
     grid-template-columns: repeat(5, 1fr);
   }
+`;
+
+// detail card
+export const StyledDetailCard = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  transition: width 0.5s, height 0.5s;
+`;
+export const RightSide = styled.div`
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
 `;
