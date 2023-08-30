@@ -1,4 +1,4 @@
-import { getDetail } from "@/api/getDetail";
+import { getDetail, getDetailCourse } from "@/api/getDetail";
 import { getLocationTour } from "@/api/getLocationT";
 import { getFestival } from "@/api/getSearch";
 import { getCourseTourInfo, getTourInfo } from "@/api/getTourInfo";
@@ -111,11 +111,13 @@ export const useImageInfo = ({
 export const useDetailInfo = ({
   endpoint,
   contentId,
+  contentTypeId,
 }: Partial<DetailInfoParams>) => {
   const params = {
-    service: "/detailInfo1",
+    service: "/detailCommon1",
     contentId,
     endpoint,
+    contentTypeId,
   };
   return useQuery({
     queryKey: [params.service, { contentId }],
@@ -133,5 +135,23 @@ export const useLocationTour = ({ mapX, mapY }: Partial<LocationParams>) => {
   return useQuery({
     queryKey: [params.service, { mapX, mapY }],
     queryFn: () => getLocationTour(params),
+  });
+};
+
+export const useDetailCourse = ({
+  contentId,
+}: Omit<DetailInfoParams, "contentTypeId" | "endpoint"> & {
+  contentTypeId: number;
+  endpoint: string;
+}) => {
+  const params = {
+    service: "/detailInfo1",
+    contentId,
+    endpoint: "/KorService1",
+    contentTypeId: 25,
+  };
+  return useQuery({
+    queryKey: [params.service, { contentId }],
+    queryFn: () => getDetailCourse(params),
   });
 };
