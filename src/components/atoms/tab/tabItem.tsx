@@ -2,24 +2,17 @@ import { StyledTabItem, StyledTabItemLi } from "./styles";
 import { IconContext } from "react-icons";
 import { TabType } from "@/types/type";
 
-type TabItemProps = Pick<TabType, "code"> & {
+type TabItemProps = {
   Icon: TabType["icon"];
   label: TabType["name"];
-  setCurTab: React.Dispatch<React.SetStateAction<string>>;
-  curTab: string;
+  onClick: () => void;
+  isActive: boolean;
 };
 
-const TabItem = ({ label, code, setCurTab, curTab, Icon }: TabItemProps) => {
-  const handleTab = (code: TabType["code"]) => {
-    setCurTab(code);
-  };
-
+const TabItem = ({ label, onClick, Icon, isActive }: TabItemProps) => {
   return (
     <>
-      <StyledTabItemLi
-        $active={curTab === code}
-        onClick={() => handleTab(code)}
-      >
+      <StyledTabItemLi $active={isActive} onClick={onClick}>
         {Icon && (
           <IconContext.Provider value={{ color: "#ffffff", size: "1.5rem" }}>
             <Icon />

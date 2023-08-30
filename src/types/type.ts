@@ -24,7 +24,7 @@ export interface SelectTagType {
 export interface TabType {
   name: string;
   code: string;
-  icon?: IconType;
+  icon?: IconType | null;
   label?: string;
 }
 

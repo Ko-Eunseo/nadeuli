@@ -1,6 +1,7 @@
 import TabItem from "@/components/atoms/tab/tabItem";
 import { StyledTabHead } from "./styles";
 import { TabType } from "@/types/type";
+import { InitTab } from "@/hooks/useTab";
 
 const TabHead = ({
   tabList,
@@ -8,20 +9,23 @@ const TabHead = ({
   curTab,
 }: {
   tabList: TabType[];
-  setCurTab: React.Dispatch<React.SetStateAction<string>>;
-  curTab: string;
+  setCurTab: React.Dispatch<React.SetStateAction<InitTab>>;
+  curTab: InitTab;
 }) => {
+  const handleTab = ({ name, code, idx }: InitTab) => {
+    setCurTab({ name, code, idx });
+  };
+
   return (
     <StyledTabHead>
-      {tabList?.map(({ code, name, label, icon }) => {
+      {tabList?.map(({ code, name, label, icon }, i) => {
         return (
           <TabItem
             key={code}
-            code={code}
             label={name}
-            setCurTab={setCurTab}
-            curTab={curTab}
+            isActive={curTab.code ? curTab.code === code : i === 0}
             Icon={icon}
+            onClick={() => handleTab({ name, code, idx: i })}
           />
         );
       })}

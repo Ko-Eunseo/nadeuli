@@ -31,7 +31,7 @@ export const useAreaBasedTourInfo = ({
 export const useThemeCourseTour = ({
   service,
   areaCode = "1",
-  cat2,
+  cat2 = "C0112",
 }: Partial<AreaBasedCourseParams>) => {
   const params = {
     service: "/areaBasedList1",

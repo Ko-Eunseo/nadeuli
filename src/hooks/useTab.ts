@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { iconType } from "@/variables/icons";
 import { combineCategoriesWithIcons } from "@/utills/getIconMap";
-import { UseQueryResult } from "@tanstack/react-query";
+import { TabType } from "@/types/type";
 
-const useTab = (
-  // initialTab: number,
-  callback: () => UseQueryResult<any, unknown>,
-  icons: iconType[]
-) => {
-  const [curTab, setCurTab] = useState<string>(""); // 초기값 설정 추상화 필요!
-  const tabList = combineCategoriesWithIcons({ callback, icons });
+export type InitTab = TabType & { idx: number };
+
+const useTab = ({
+  category,
+  icons,
+}: {
+  category: TabType[];
+  icons: iconType[];
+}) => {
+  const initialTab: InitTab = { name: "", code: "", idx: 0 };
+  const [curTab, setCurTab] = useState<InitTab>(initialTab);
+  const tabList = combineCategoriesWithIcons({ category, icons });
 
   return { tabState: { curTab, setCurTab }, tabList };
 };
