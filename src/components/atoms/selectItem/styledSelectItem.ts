@@ -10,6 +10,8 @@ const StyledSelectItem = styled.option`
   color: #ffffff;
   font-size: ${sizes.sm};
   line-height: 150%;
+  position: relative;
+  z-index: 1;
 `;
 
 export default StyledSelectItem;
