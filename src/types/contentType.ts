@@ -13,7 +13,7 @@ interface Festival {
   name: "축제공연행사";
 }
 
-interface TourCourse {
+export interface TourCourse {
   id: 25;
   name: "여행코스";
 }

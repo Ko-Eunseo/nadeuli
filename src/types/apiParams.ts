@@ -1,9 +1,10 @@
 import { Area } from "./area";
 import { ContentType } from "./contentType";
+import { Cat2 } from "./course";
 import { Endpoint } from "./endPoint";
 
 interface BasicParams {
-  endpoint?: Endpoint["endpoint"];
+  endpoint?: Endpoint["endpoint"] | string;
 }
 
 export interface AreaParams extends BasicParams {
@@ -34,6 +35,10 @@ export interface SearchFestivalParams extends AreaParams {
 export interface LocationParams extends CategoryParams {
   mapX: number;
   mapY: number;
+}
+
+export interface AreaBasedCourseParams extends AreaBasedParams {
+  cat2?: Cat2["code"];
 }
 
 export type URL_TYPE =

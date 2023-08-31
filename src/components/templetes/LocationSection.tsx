@@ -6,15 +6,16 @@ import CardController from "../organisms/card/CardController";
 import { HorizontalCardList, OverFlowHidden } from "../organisms/card/styled";
 import GeolocationBtn from "../molecules/button/GeolocationBtn";
 import useCurTour from "@/hooks/useCurTour";
-import useArea from "@/hooks/useArea";
 import getConfirm from "@/utills/getConfirm";
+import { useRecoilState } from "recoil";
+import { Area } from "@/types/area";
+import { areaSelector } from "@/recoil/selectors/areaSelector";
 
 const LocationSection = () => {
   const { courseData, curAreaCode, refethPosition } = useCurTour();
-  const { data: locations } = useArea({});
+  const [areas] = useRecoilState<Area[]>(areaSelector);
 
-  const locationArr = locations?.response?.body?.items.item;
-  const curAreaName = locationArr?.find((el: { code: number }) => {
+  const curAreaName = areas?.find((el: { code: Area["code"] }) => {
     return el.code === curAreaCode;
   })?.name;
 
@@ -32,7 +33,7 @@ const LocationSection = () => {
         <GeolocationBtn onClick={clickLocationBtn} />
       </Char>
       <HorizontalCardList>
-        <CardController contentTypeId={25} cardData={courseData} />
+        <CardController cardData={courseData} />
         {courseData.length === 0 && (
           <Char size="sm" weight="mid">
             현재 해당 위치의 여행코스 데이터가 없습니다.

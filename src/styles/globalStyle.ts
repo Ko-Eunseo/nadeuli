@@ -10,14 +10,14 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     background-color: ${colors.background};
+    margin: 0;
+    margin-top: -4px; //알수없는 마진탑 없애기 위함
+    padding: 0;
   }
   
   #root {
     margin: 0 auto;
-  }
-  
-  html {
-    font-size: 62.5%;
+    overflow-x: hidden;
   }
   
   * {
@@ -36,10 +36,14 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: black;
   }
+  
   ul, ol {
-    list-style: none;
     padding-left: 0;
     margin: 0;
+  }
+
+  li {
+    list-style: none;
   }
 `;
 

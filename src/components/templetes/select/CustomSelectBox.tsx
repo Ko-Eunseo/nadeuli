@@ -1,22 +1,32 @@
 "use client";
 
 import React from "react";
-import useArea from "@/hooks/useArea";
 import { contentTypes } from "@/variables/contentType";
 import { mates } from "@/variables/mate";
 import CustomSelect from "../../organisms/selectForm/CustomSelect";
-import { Box } from "../../atoms/styles";
+import { Box, CenterBox } from "../../atoms/styles";
 import { Arrow, SelectBox, SelectComment } from "../styles";
 import CustomTags from "./CustomTags";
 import { BsFillTriangleFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import useDrag from "@/hooks/useDrag";
+import Button from "@/components/atoms/buttons/basicBtn/Button";
+import { colors } from "@/styles/colors";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { areaSelector } from "@/recoil/selectors/areaSelector";
+import { Area } from "@/types/area";
 
-const CustomSelectBox = () => {
-  const { data: location, isLoading: locationIsLoading } = useArea({});
+const CustomSelectBox = ({
+  setisSelect,
+}: {
+  setisSelect: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { handleDrop, handleDragOver } = useDrag();
+  const [locations] = useRecoilState<Area[]>(areaSelector);
 
-  const locations = location?.response?.body?.items?.item || [];
+  const getSelectTour = () => {
+    setisSelect(true);
+  };
 
   return (
     <>
@@ -34,8 +44,13 @@ const CustomSelectBox = () => {
         contentTypes={contentTypes}
         mates={mates}
       />
+      <CenterBox>
+        <Button bg="red" label="Go!" onClick={getSelectTour} />
+      </CenterBox>
       <Arrow>
-        <IconContext.Provider value={{ color: "white", size: "3rem" }}>
+        <IconContext.Provider
+          value={{ color: `${colors.background}`, size: "3rem" }}
+        >
           <BsFillTriangleFill />
         </IconContext.Provider>
       </Arrow>

@@ -10,7 +10,7 @@ interface TitleType {
   text: string;
 }
 const Title = ({ type, text }: TitleType) => {
-  const size = type === "main" ? "display" : "lg";
+  const size = type === "main" ? "display" : "md";
   const weight = type === "main" ? "" : "thin";
   const className = type === "main" ? blackGothic.className : "";
 

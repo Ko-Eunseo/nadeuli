@@ -1,8 +1,14 @@
-import { getDetail } from "@/api/getDetail";
+import {
+  getBarrierFree,
+  getDetail,
+  getDetailCourse,
+  getInfoWithId,
+} from "@/api/getDetail";
 import { getLocationTour } from "@/api/getLocationT";
 import { getFestival } from "@/api/getSearch";
-import { getTourInfo } from "@/api/getTourInfo";
+import { getCourseTourInfo, getTourInfo } from "@/api/getTourInfo";
 import {
+  AreaBasedCourseParams,
   AreaBasedParams,
   DetailInfoParams,
   LocationParams,
@@ -27,6 +33,22 @@ export const useAreaBasedTourInfo = ({
   });
 };
 
+export const useThemeCourseTour = ({
+  service,
+  areaCode = "1",
+  cat2 = "C0112",
+}: Partial<AreaBasedCourseParams>) => {
+  const params = {
+    service: "/areaBasedList1",
+    areaCode,
+    cat2,
+  };
+  return useQuery({
+    queryKey: ["/areaBasedList1", cat2],
+    queryFn: () => getCourseTourInfo(params),
+  });
+};
+
 export const useFestivalInfo = ({
   endpoint,
   eventStartDate,
@@ -44,17 +66,16 @@ export const useFestivalInfo = ({
   });
 };
 export const usePetTourInfo = ({
-  endpoint,
   contentId,
-}: Partial<DetailInfoParams>) => {
+}: Pick<DetailInfoParams, "contentId">) => {
   const params = {
     service: "/detailPetTour1",
     contentId,
-    endpoint,
+    endpoint: "/KorService1",
   };
   return useQuery({
     queryKey: [params.service, { contentId }],
-    queryFn: () => getTourInfo(params),
+    queryFn: () => getInfoWithId(params),
   });
 };
 
@@ -94,11 +115,13 @@ export const useImageInfo = ({
 export const useDetailInfo = ({
   endpoint,
   contentId,
+  contentTypeId,
 }: Partial<DetailInfoParams>) => {
   const params = {
-    service: "/detailInfo1",
+    service: "/detailCommon1",
     contentId,
     endpoint,
+    contentTypeId,
   };
   return useQuery({
     queryKey: [params.service, { contentId }],
@@ -116,5 +139,49 @@ export const useLocationTour = ({ mapX, mapY }: Partial<LocationParams>) => {
   return useQuery({
     queryKey: [params.service, { mapX, mapY }],
     queryFn: () => getLocationTour(params),
+  });
+};
+
+export const useDetailCourse = ({
+  contentId,
+}: Pick<DetailInfoParams, "contentId">) => {
+  const params = {
+    service: "/detailInfo1",
+    contentId,
+    endpoint: "/KorService1",
+    contentTypeId: 25,
+  };
+  return useQuery({
+    queryKey: [params.service, { contentId }],
+    queryFn: () => getDetailCourse(params),
+  });
+};
+
+export const useUseInfo = ({
+  contentId,
+  contentTypeId,
+}: Pick<DetailInfoParams, "contentId" | "contentTypeId">) => {
+  const params = {
+    endpoint: "/KorService1",
+    service: "/detailIntro1",
+    contentId,
+    contentTypeId,
+  };
+  return useQuery({
+    queryKey: [params.service, { contentId }],
+    queryFn: () => getInfoWithId(params),
+  });
+};
+
+export const useBarrierFree = ({
+  contentId,
+}: Pick<DetailInfoParams, "contentId">) => {
+  const params = {
+    contentId,
+    service: "/detailWithTour1",
+  };
+  return useQuery({
+    queryKey: [params.service, { contentId }],
+    queryFn: () => getBarrierFree(params),
   });
 };

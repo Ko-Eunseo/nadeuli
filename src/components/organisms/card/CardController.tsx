@@ -1,16 +1,21 @@
 import Card, { CardData } from "@/components/molecules/card/Card";
-import { ContentType } from "@/types/contentType";
+import useModal from "@/hooks/useModal";
+import ModalCard from "./ModalCard";
 
 interface CardControllerProps {
-  contentTypeId: ContentType["id"];
   cardData: CardData[];
 }
 
-const CardController = ({ contentTypeId, cardData }: CardControllerProps) => {
-  // onClick시 useDetailInfo를 가진 card
-  return cardData.map((el, i) => {
-    return <Card key={i} data={el} />;
-  });
+const CardController = ({ cardData }: CardControllerProps) => {
+  const { modal } = useModal();
+  return (
+    <>
+      {cardData.map((el, i) => {
+        return <Card key={i} data={el} />;
+      })}
+      {modal.contentId && <ModalCard contentId={modal.contentId} />}
+    </>
+  );
 };
 
 export default CardController;

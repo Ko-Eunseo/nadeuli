@@ -1,8 +1,7 @@
 import SelectItem from "@/components/atoms/selectItem/SelectItem";
 import { Label, StyledSelect } from "./styledSelect";
-import { TagType } from "@/types/type";
+import { OptionhandlerParam, TagType } from "@/types/type";
 import { Selected } from "@/recoil/atoms/selectState";
-import { OptionhandlerParam } from "@/hooks/useSelect";
 
 interface SelectFieldProps {
   options: TagType[];

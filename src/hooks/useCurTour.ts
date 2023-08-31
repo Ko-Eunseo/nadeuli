@@ -2,11 +2,12 @@ import useCurPosition from "./useCurPosition";
 import { useLocationTour } from "./useTourInfo";
 import { Endpoint } from "@/types/endPoint";
 import { getValueFromArr } from "@/utills/getValWithId";
-import { Selected, selectState } from "@/recoil/atoms/selectState";
+import { Selected } from "@/recoil/atoms/selectState";
 import { useRecoilState } from "recoil";
+import { selectOptionSelector } from "@/recoil/selectors/selectOptionSelector";
 
 const useCurTour = () => {
-  const [selection] = useRecoilState<Selected[]>(selectState);
+  const [selection] = useRecoilState<Selected[]>(selectOptionSelector);
   const endpoint = getValueFromArr(selection, "who") as Endpoint["endpoint"];
   const { position, refetch } = useCurPosition();
 

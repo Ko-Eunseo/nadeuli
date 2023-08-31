@@ -6,6 +6,12 @@ export const Box = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 30vh;
+  }
 `;
 
 export const CenterBox = styled.div`

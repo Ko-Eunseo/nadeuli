@@ -1,4 +1,5 @@
 import { colors } from "@/styles/colors";
+import { IconType } from "react-icons";
 
 export type RESPONSE_OK = "OK";
 export type RESPONSE_ERROR = "ERROR";
@@ -19,6 +20,12 @@ export interface SelectTagType {
   name: TagType["name"];
   code: TagType["code"];
   bg: keyof typeof colors;
+}
+export interface TabType {
+  name: string;
+  code: string;
+  icon?: IconType | null;
+  label?: string;
 }
 
 export type LocationBased = "locationBased"; //현재위치기반
