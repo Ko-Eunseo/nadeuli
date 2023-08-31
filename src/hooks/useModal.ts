@@ -1,6 +1,7 @@
 import { useDetailInfo } from "./useTourInfo";
 import { useRecoilState } from "recoil";
 import { modalState } from "@/recoil/atoms/modalState";
+import { ContentType } from "@/types/contentType";
 
 const useModal = () => {
   const [modal, setModal] = useRecoilState(modalState);
@@ -16,7 +17,7 @@ const useModal = () => {
     contentTypeId,
   }: {
     contentId: string;
-    contentTypeId: string;
+    contentTypeId: ContentType["id"];
   }) => {
     setModal({
       isOpen: true,
@@ -29,7 +30,7 @@ const useModal = () => {
     setModal({
       isOpen: false,
       contentId: "",
-      contentTypeId: "",
+      contentTypeId: undefined,
     });
   };
 
