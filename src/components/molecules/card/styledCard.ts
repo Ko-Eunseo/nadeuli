@@ -39,15 +39,34 @@ export const CardGrid = styled.div`
   }
 `;
 
-// detail card
+// detail card : @todo 반응형 대응하기
 export const StyledDetailCard = styled.div`
   display: flex;
-  align-items: center;
   padding: 1rem;
   transition: width 0.5s, height 0.5s;
+  overflow: hidden; //
 `;
 export const RightSide = styled.div`
   position: fixed;
   right: 1rem;
   top: 1rem;
+`;
+export const LeftSide = styled.div`
+  position: sticky;
+  top: 2rem;
+`;
+export const StyledCardTab = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+`;
+export const StyledCardTabBody = styled.div`
+  margin: 1rem;
+  text-indent: 5px;
+  line-height: 1.3rem;
+`;
+export const StyledCourseCard = styled.div`
+  margin: 1rem 0 1rem 1rem;
+  overflow-y: auto;
+  max-height: 300px;
 `;

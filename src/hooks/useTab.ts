@@ -10,11 +10,18 @@ const useTab = ({
   icons,
 }: {
   category: TabType[];
-  icons: iconType[];
+  icons?: iconType[];
 }) => {
   const initialTab: InitTab = { name: "", code: "", idx: 0 };
   const [curTab, setCurTab] = useState<InitTab>(initialTab);
-  const tabList = combineCategoriesWithIcons({ category, icons });
+
+  let tabList;
+
+  if (icons) {
+    tabList = combineCategoriesWithIcons({ category, icons });
+  } else {
+    tabList = category;
+  }
 
   return { tabState: { curTab, setCurTab }, tabList };
 };

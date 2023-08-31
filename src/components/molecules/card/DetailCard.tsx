@@ -1,4 +1,4 @@
-import { RightSide, StyledDetailCard } from "./styledCard";
+import { LeftSide, RightSide, StyledDetailCard } from "./styledCard";
 import Image from "next/image";
 import { CardData } from "./Card";
 import ContentBox from "@/components/atoms/content/ContentBox";
@@ -7,13 +7,31 @@ import { IoCloseSharp } from "react-icons/io5";
 import useModal from "@/hooks/useModal";
 import DefaultImg from "@/components/atoms/content/DefaultImg";
 import { IconContext } from "react-icons";
-import Char from "@/components/atoms/texts/Character";
+import CardTab from "./CardTab";
+import { cardTabList } from "@/variables/cardTabList";
+import { CourseTour } from "@/types/course";
+import { PetTour } from "@/types/tourPet";
 
-interface DetailData extends CardData {
+export interface DetailData extends CardData {
   overview: string;
+  tel: string;
+  homepage: string;
 }
-const DetailCard = ({ detailInfo }: { detailInfo: DetailData }) => {
+const DetailCard = ({
+  detailInfo,
+  courses,
+  useInfos,
+  petInfo,
+  barrierFree,
+}: {
+  detailInfo: DetailData;
+  courses: CourseTour[];
+  useInfos: any;
+  petInfo: PetTour;
+  barrierFree: any;
+}) => {
   const { closeModal } = useModal();
+
   return (
     <>
       <StyledDetailCard>
@@ -22,7 +40,7 @@ const DetailCard = ({ detailInfo }: { detailInfo: DetailData }) => {
             <IconBtn Icon={IoCloseSharp} onClick={closeModal} />
           </IconContext.Provider>
         </RightSide>
-        <div>
+        <LeftSide>
           {detailInfo?.firstimage ? (
             <Image
               src={detailInfo?.firstimage}
@@ -36,16 +54,22 @@ const DetailCard = ({ detailInfo }: { detailInfo: DetailData }) => {
             <DefaultImg />
           )}
           <ContentBox title={detailInfo?.title} addr1={detailInfo?.addr1} />
-        </div>
-        {/* detail 정보 추가 */}
-        <div>
-          <Char size="md" weight="thin">
-            {detailInfo?.overview}
-          </Char>
-        </div>
+        </LeftSide>
+        <CardTab
+          detailInfo={detailInfo}
+          cardTabList={cardTabList}
+          courses={courses}
+          useInfos={useInfos}
+          petInfo={petInfo}
+          barrierFree={barrierFree}
+        />
       </StyledDetailCard>
     </>
   );
 };
 
 export default DetailCard;
+// tab 사용(오른쪽)
+// 1. 개요: overview 존, 전화번호, 홈페이지
+// 2. 코스정보: contentTypeId: 25인경우
+// 3. 이용안내: 애견동반여부, 무장애 여부(유모차)
