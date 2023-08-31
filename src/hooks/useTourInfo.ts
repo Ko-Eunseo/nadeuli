@@ -28,7 +28,7 @@ export const useAreaBasedTourInfo = ({
     endpoint,
   };
   return useQuery({
-    queryKey: ["/areaBasedList1"],
+    queryKey: ["/areaBasedList1", { areaCode, contentTypeId }],
     queryFn: () => getTourInfo(params),
   });
 };
