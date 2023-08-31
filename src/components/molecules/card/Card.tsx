@@ -3,6 +3,7 @@ import { StyledCard } from "./styledCard";
 import Image from "next/image";
 import DefaultImg from "@/components/atoms/content/DefaultImg";
 import useModal from "@/hooks/useModal";
+import { ContentType } from "@/types/contentType";
 
 interface CardProps {
   data: CardData;
@@ -12,7 +13,7 @@ export interface CardData {
   addr1: string;
   areacode: number;
   contentid: string;
-  contenttypeid: string;
+  contenttypeid: ContentType["id"];
   firstimage: string;
   title: string;
 }
