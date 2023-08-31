@@ -4,7 +4,7 @@ import { Cat2 } from "./course";
 import { Endpoint } from "./endPoint";
 
 interface BasicParams {
-  endpoint?: Endpoint["endpoint"];
+  endpoint?: Endpoint["endpoint"] | string;
 }
 
 export interface AreaParams extends BasicParams {

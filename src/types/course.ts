@@ -46,3 +46,14 @@ export type Cat2 =
   | WalkCourse
   | CampCourse
   | FoodCourse;
+
+export interface CourseTour {
+  contentid: string;
+  contenttypeid: 25;
+  subnum: string;
+  subcontentid: string;
+  subname: string;
+  subdetailoverview: string;
+  subdetailimg: string;
+  subdetailalt: string;
+}

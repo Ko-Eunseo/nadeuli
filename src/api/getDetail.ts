@@ -37,3 +37,32 @@ export const getDetailCourse = async ({
   );
   return res.data;
 };
+
+export const getInfoWithId = async ({
+  contentTypeId,
+  contentId,
+  service,
+}: Pick<DetailInfoParams, "contentId" | "contentTypeId" | "service">) => {
+  const res = await axios.get(
+    getURL({
+      endpoint: "/KorService1",
+      service,
+      contentTypeId,
+      contentId,
+    })
+  );
+  return res.data;
+};
+
+export const getBarrierFree = async ({
+  contentId,
+}: Pick<DetailInfoParams, "contentId">) => {
+  const res = await axios.get(
+    getURL({
+      endpoint: "/KorWithService1",
+      contentId,
+      service: "/detailWithTour1",
+    })
+  );
+  return res.data;
+};

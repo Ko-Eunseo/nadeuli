@@ -1,4 +1,9 @@
-import { getDetail, getDetailCourse } from "@/api/getDetail";
+import {
+  getBarrierFree,
+  getDetail,
+  getDetailCourse,
+  getInfoWithId,
+} from "@/api/getDetail";
 import { getLocationTour } from "@/api/getLocationT";
 import { getFestival } from "@/api/getSearch";
 import { getCourseTourInfo, getTourInfo } from "@/api/getTourInfo";
@@ -61,17 +66,16 @@ export const useFestivalInfo = ({
   });
 };
 export const usePetTourInfo = ({
-  endpoint,
   contentId,
-}: Partial<DetailInfoParams>) => {
+}: Pick<DetailInfoParams, "contentId">) => {
   const params = {
     service: "/detailPetTour1",
     contentId,
-    endpoint,
+    endpoint: "/KorService1",
   };
   return useQuery({
     queryKey: [params.service, { contentId }],
-    queryFn: () => getTourInfo(params),
+    queryFn: () => getInfoWithId(params),
   });
 };
 
@@ -140,10 +144,7 @@ export const useLocationTour = ({ mapX, mapY }: Partial<LocationParams>) => {
 
 export const useDetailCourse = ({
   contentId,
-}: Omit<DetailInfoParams, "contentTypeId" | "endpoint"> & {
-  contentTypeId: number;
-  endpoint: string;
-}) => {
+}: Pick<DetailInfoParams, "contentId">) => {
   const params = {
     service: "/detailInfo1",
     contentId,
@@ -153,5 +154,34 @@ export const useDetailCourse = ({
   return useQuery({
     queryKey: [params.service, { contentId }],
     queryFn: () => getDetailCourse(params),
+  });
+};
+
+export const useUseInfo = ({
+  contentId,
+  contentTypeId,
+}: Pick<DetailInfoParams, "contentId" | "contentTypeId">) => {
+  const params = {
+    endpoint: "/KorService1",
+    service: "/detailIntro1",
+    contentId,
+    contentTypeId,
+  };
+  return useQuery({
+    queryKey: [params.service, { contentId }],
+    queryFn: () => getInfoWithId(params),
+  });
+};
+
+export const useBarrierFree = ({
+  contentId,
+}: Pick<DetailInfoParams, "contentId">) => {
+  const params = {
+    contentId,
+    service: "/detailWithTour1",
+  };
+  return useQuery({
+    queryKey: [params.service, { contentId }],
+    queryFn: () => getBarrierFree(params),
   });
 };
