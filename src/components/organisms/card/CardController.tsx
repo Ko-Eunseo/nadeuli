@@ -10,7 +10,7 @@ const CardController = ({ cardData }: CardControllerProps) => {
   const { modal } = useModal();
   return (
     <>
-      {cardData.map((el, i) => {
+      {cardData?.map((el, i) => {
         return <Card key={i} data={el} />;
       })}
       {modal.contentId && <ModalCard contentId={modal.contentId} />}

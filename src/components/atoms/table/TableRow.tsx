@@ -13,7 +13,7 @@ const TableRow = ({ tContent }: { tContent: { [key: string]: string } }) => {
 
   return (
     <>
-      {Object.entries(tContent).map(([key, value], i) => {
+      {Object.entries(tContent)?.map(([key, value], i) => {
         const newRow = shouldRenderRow(key, value);
         return (
           newRow && (

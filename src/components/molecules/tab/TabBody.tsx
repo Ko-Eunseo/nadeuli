@@ -18,7 +18,7 @@ const TabBody = ({
   return (
     <>
       <StyledTabBody>
-        {tabCategory.map(({ code, name, label }, i) => {
+        {tabCategory?.map(({ code, name, label }, i) => {
           return (
             <StyledTabBox
               $active={curTab.code ? curTab.code === code : i === 0}

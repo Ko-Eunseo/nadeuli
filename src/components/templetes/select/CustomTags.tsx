@@ -15,7 +15,7 @@ const CustomTags = ({ locations, contentTypes, mates }: CustomTagType) => {
     label: string,
     bg: keyof typeof colors
   ) => {
-    return data.map(({ id, code, name }) => {
+    return data?.map(({ id, code, name }) => {
       return (
         <SelectTagItem
           key={code + name}

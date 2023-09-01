@@ -5,7 +5,7 @@ import Accordion from "@/components/atoms/accordion/Accordion";
 const CourseCard = ({ courses }: { courses: CourseTour[] }) => {
   return (
     <StyledCourseCard>
-      {courses.map((course) => {
+      {courses?.map((course) => {
         return (
           <Accordion
             key={course?.contentid}
