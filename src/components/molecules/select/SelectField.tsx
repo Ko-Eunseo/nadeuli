@@ -46,7 +46,7 @@ const SelectField = ({
           />
         )}
         {options &&
-          options.map((option: TagType, i) => {
+          options?.map((option: TagType, i) => {
             return (
               <SelectItem
                 key={i}
