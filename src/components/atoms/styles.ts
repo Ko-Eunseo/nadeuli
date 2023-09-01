@@ -24,3 +24,7 @@ export const CenterBox = styled.div`
 export const Margin8 = styled.div`
   margin: 8px;
 `;
+
+export const RelativeBox = styled.div`
+  position: relative;
+`;

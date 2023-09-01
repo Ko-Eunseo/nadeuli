@@ -1,10 +1,8 @@
-import { colors } from "@/styles/colors";
 import { styled } from "styled-components";
 
 export const StyledCard = styled.div`
   width: 200px;
   border-radius: 0.5rem;
-  /* margin: 0.5rem; */
   background-color: #ffffff;
 `;
 
@@ -13,6 +11,7 @@ export const CardWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 2rem;
+  position: relative;
 `;
 
 export const CardGrid = styled.div`

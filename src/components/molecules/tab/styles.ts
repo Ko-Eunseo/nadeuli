@@ -32,6 +32,6 @@ export const StyledTabBody = styled.div`
   }
 `;
 
-export const StyledTabBox = styled.section<{ $active: boolean }>`
+export const StyledTabBox = styled.section<{ $active?: boolean }>`
   display: ${({ $active }) => ($active ? "block" : "none")};
 `;

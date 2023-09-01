@@ -23,7 +23,7 @@ const useCurTour = () => {
   const courseData = data?.response?.body?.items?.item || [];
   const curAreaCode = courseData[0]?.areacode;
 
-  return { courseData, curAreaCode, refethPosition };
+  return { courseData, curAreaCode, refethPosition, isLoading };
 };
 
 export default useCurTour;

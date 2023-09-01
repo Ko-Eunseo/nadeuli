@@ -7,13 +7,15 @@ export const getTourInfo = async ({
   service,
   areaCode,
   contentTypeId,
-}: AreaBasedParams) => {
+  pageNo,
+}: AreaBasedParams & { pageNo?: number }) => {
   const res = await axios.get(
     getURL({
       endpoint,
       service,
       areaCode,
       contentTypeId,
+      pageNo,
     })
   );
   return res.data;
@@ -23,7 +25,8 @@ export const getCourseTourInfo = async ({
   service,
   areaCode,
   cat2,
-}: AreaBasedCourseParams) => {
+  pageNo,
+}: AreaBasedCourseParams & { pageNo: number }) => {
   const res = await axios.get(
     getURL({
       endpoint: "/KorService1",
@@ -32,6 +35,7 @@ export const getCourseTourInfo = async ({
       contentTypeId: 25,
       cat1: "C01",
       cat2,
+      pageNo,
     })
   );
   return res.data;
