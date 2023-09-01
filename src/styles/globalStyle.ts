@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { colors } from "./colors";
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -8,23 +9,20 @@ const GlobalStyle = createGlobalStyle`
   body {
     width: 100%;
     height: 100%;
+    background-color: ${colors.background};
+    margin: 0;
+    margin-top: -4px; //알수없는 마진탑 없애기 위함
+    padding: 0;
   }
   
   #root {
     margin: 0 auto;
-  }
-  
-  html {
-    font-size: 62.5%;
+    overflow-x: hidden;
   }
   
   * {
     box-sizing: border-box;
   }
-
-  /* body, button {
-    font-family: -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  } */
   
   button {
     cursor: pointer;
@@ -38,10 +36,14 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: black;
   }
+  
   ul, ol {
-    list-style: none;
     padding-left: 0;
     margin: 0;
+  }
+
+  li {
+    list-style: none;
   }
 `;
 
