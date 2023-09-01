@@ -4,6 +4,23 @@ import { IconType } from "react-icons";
 export type RESPONSE_OK = "OK";
 export type RESPONSE_ERROR = "ERROR";
 
+export interface DataStructure {
+  response: {
+    header: {
+      resultCode: string;
+      resultMsg: RESPONSE_OK | RESPONSE_ERROR | string;
+    };
+    body: {
+      items: {
+        item: [];
+      };
+      numOfRows: number;
+      pageNo: number;
+      totalCount: number;
+    };
+  };
+}
+
 export interface TagType {
   id?: number | string;
   code?: string | number;

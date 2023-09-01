@@ -20,15 +20,17 @@ export const useAreaBasedTourInfo = ({
   endpoint,
   areaCode,
   contentTypeId,
-}: Partial<AreaBasedParams>) => {
+  pageNo = 1,
+}: Partial<AreaBasedParams> & { pageNo?: number }) => {
   const params = {
     service: "/areaBasedList1",
     areaCode,
     contentTypeId,
     endpoint,
+    pageNo,
   };
   return useQuery({
-    queryKey: ["/areaBasedList1", { areaCode, contentTypeId }],
+    queryKey: ["/areaBasedList1", { areaCode, contentTypeId, pageNo }],
     queryFn: () => getTourInfo(params),
   });
 };
@@ -37,14 +39,16 @@ export const useThemeCourseTour = ({
   service,
   areaCode = "1",
   cat2 = "C0112",
-}: Partial<AreaBasedCourseParams>) => {
+  pageNo = 1,
+}: Partial<AreaBasedCourseParams> & { pageNo?: number }) => {
   const params = {
     service: "/areaBasedList1",
     areaCode,
     cat2,
+    pageNo,
   };
   return useQuery({
-    queryKey: ["/areaBasedList1", cat2],
+    queryKey: ["/areaBasedList1", { cat2, pageNo }],
     queryFn: () => getCourseTourInfo(params),
   });
 };
