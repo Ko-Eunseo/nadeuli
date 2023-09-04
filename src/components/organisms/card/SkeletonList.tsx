@@ -1,11 +1,11 @@
-import Skeleton from "@/components/atoms/skeleton/Skeleton";
-import { CardGrid } from "@/components/molecules/card/styledCard";
-import { loadComponentNtime } from "@/utills/loadComponentNtime";
+import Skeleton from "@/components/atoms/skeleton/SkeletonCard";
 
-const SkeletonList = () => {
+const SkeletonList = ({ len = 10 }: { len?: number }) => {
   return (
     <>
-      <CardGrid>{loadComponentNtime(<Skeleton />, 10)}</CardGrid>
+      {Array.from({ length: len }).map((_, i) => {
+        return <Skeleton key={i} />;
+      })}
     </>
   );
 };
