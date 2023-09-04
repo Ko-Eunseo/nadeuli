@@ -32,6 +32,7 @@ export const useAreaBasedTourInfo = ({
   return useQuery({
     queryKey: ["/areaBasedList1", { areaCode, contentTypeId, pageNo }],
     queryFn: () => getTourInfo(params),
+    suspense: true,
   });
 };
 
@@ -50,6 +51,7 @@ export const useThemeCourseTour = ({
   return useQuery({
     queryKey: ["/areaBasedList1", { cat2, pageNo }],
     queryFn: () => getCourseTourInfo(params),
+    suspense: true,
   });
 };
 
@@ -67,6 +69,7 @@ export const useFestivalInfo = ({
   return useQuery({
     queryKey: [params.service, params],
     queryFn: () => getFestival(params),
+    suspense: true,
   });
 };
 export const usePetTourInfo = ({
@@ -80,6 +83,7 @@ export const usePetTourInfo = ({
   return useQuery({
     queryKey: [params.service, { contentId }],
     queryFn: () => getInfoWithId(params),
+    suspense: true,
   });
 };
 
@@ -98,6 +102,7 @@ export const useContentDetailInfo = ({
   return useQuery({
     queryKey: [params.service, { contentId, contentTypeId }],
     queryFn: () => getDetail(params),
+    suspense: true,
   });
 };
 
@@ -113,6 +118,7 @@ export const useImageInfo = ({
   return useQuery({
     queryKey: [params.service, { contentId }],
     queryFn: () => getDetail(params),
+    suspense: true,
   });
 };
 
@@ -130,6 +136,7 @@ export const useDetailInfo = ({
   return useQuery({
     queryKey: [params.service, { contentId }],
     queryFn: () => getDetail(params),
+    suspense: true,
   });
 };
 
@@ -143,6 +150,7 @@ export const useLocationTour = ({ mapX, mapY }: Partial<LocationParams>) => {
   return useQuery({
     queryKey: [params.service, { mapX, mapY }],
     queryFn: () => getLocationTour(params),
+    suspense: true,
   });
 };
 
@@ -158,6 +166,7 @@ export const useDetailCourse = ({
   return useQuery({
     queryKey: [params.service, { contentId }],
     queryFn: () => getDetailCourse(params),
+    suspense: true,
   });
 };
 
@@ -174,6 +183,7 @@ export const useUseInfo = ({
   return useQuery({
     queryKey: [params.service, { contentId }],
     queryFn: () => getInfoWithId(params),
+    suspense: true,
   });
 };
 
@@ -187,5 +197,6 @@ export const useBarrierFree = ({
   return useQuery({
     queryKey: [params.service, { contentId }],
     queryFn: () => getBarrierFree(params),
+    suspense: true,
   });
 };
