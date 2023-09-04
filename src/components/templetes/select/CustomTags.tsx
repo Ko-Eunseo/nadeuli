@@ -2,6 +2,7 @@ import { TagType } from "@/types/type";
 import { TagBox, TagList } from "../styles";
 import { colors } from "@/styles/colors";
 import SelectTagItem from "@/components/molecules/tag/RenderTag";
+import SkeletonTxt from "@/components/atoms/skeleton/SkeletonTxt";
 
 interface CustomTagType {
   locations: TagType[];
@@ -31,9 +32,17 @@ const CustomTags = ({ locations, contentTypes, mates }: CustomTagType) => {
   return (
     <TagBox>
       <TagList>
-        {mates && renderTag(mates, "who", "yellow")}
-        {locations && renderTag(locations, "where", "green")}
-        {contentTypes && renderTag(contentTypes, "what", "pink")}
+        {!locations?.length ? (
+          Array.from({ length: 20 }).map((el, i) => {
+            return <SkeletonTxt key={i} $width={60} $height={36} />;
+          })
+        ) : (
+          <>
+            {mates && renderTag(mates, "who", "yellow")}
+            {locations && renderTag(locations, "where", "green")}
+            {contentTypes && renderTag(contentTypes, "what", "pink")}
+          </>
+        )}
       </TagList>
     </TagBox>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Char from "../atoms/texts/Character";
 import CardController from "../organisms/card/CardController";
 import {
@@ -16,8 +16,8 @@ import { Area } from "@/types/area";
 import { areaSelector } from "@/recoil/selectors/areaSelector";
 import Title from "../molecules/title/Title";
 import { CenterBox } from "../atoms/styles";
-import Skeleton from "../atoms/skeleton/Skeleton";
-import { loadComponentNtime } from "@/utills/loadComponentNtime";
+import Nodata from "../molecules/noData/Nodata";
+import SkeletonList from "../organisms/card/SkeletonList";
 
 const LocationSection = () => {
   const { courseData, curAreaCode, refethPosition, isLoading } = useCurTour();
@@ -49,15 +49,13 @@ const LocationSection = () => {
       </CenterBox>
       <HorizontalWrapper>
         <HorizontalCardList>
-          {isLoading ? (
-            loadComponentNtime(<Skeleton />, 10)
-          ) : courseData.length === 0 ? (
-            <Char size="sm" weight="mid">
-              현재 해당 위치의 여행코스 데이터가 없습니다.
-            </Char>
-          ) : (
-            <CardController cardData={courseData} />
-          )}
+          <Suspense fallback={<SkeletonList />}>
+            {courseData?.length === 0 ? (
+              <Nodata text="현재 해당 위치의 여행코스 데이터가 없습니다." />
+            ) : (
+              <CardController cardData={courseData} />
+            )}
+          </Suspense>
         </HorizontalCardList>
       </HorizontalWrapper>
     </OverFlowHidden>
