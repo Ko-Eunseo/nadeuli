@@ -10,8 +10,8 @@ import PageBtns from "@/components/molecules/button/PageBtns";
 import usePageBtn from "@/hooks/usePageBtn";
 import { getData } from "@/utills/getData";
 import { getLastPage } from "@/utills/getLastPage";
-import Skeleton from "@/components/atoms/skeleton/Skeleton";
-import { loadComponentNtime } from "@/utills/loadComponentNtime";
+import { Suspense } from "react";
+import SkeletonList from "./SkeletonList";
 
 interface CardListProps {
   selection: Selected[];
@@ -39,11 +39,9 @@ const CardList = ({ selection }: CardListProps) => {
         handlePrev={handlePrev}
         handleNext={handleNext}
       />
-      {isLoading ? (
-        loadComponentNtime(<Skeleton />, 10)
-      ) : (
+      <Suspense fallback={<SkeletonList />}>
         <CardController cardData={cardData.itemList} />
-      )}
+      </Suspense>
     </CardGrid>
   );
 };

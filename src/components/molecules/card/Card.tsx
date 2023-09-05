@@ -4,6 +4,8 @@ import Image from "next/image";
 import DefaultImg from "@/components/atoms/content/DefaultImg";
 import useModal from "@/hooks/useModal";
 import { ContentType } from "@/types/contentType";
+import { Suspense } from "react";
+import SkeletonImg from "@/components/atoms/skeleton/SkeletonImg";
 
 interface CardProps {
   data: CardData;
@@ -23,25 +25,27 @@ const Card = ({ data }: CardProps) => {
   const { openModal, detailInfo } = useModal();
 
   return (
-    <StyledCard
-      onClick={() =>
-        openModal({ contentId: contentid, contentTypeId: contenttypeid })
-      }
-    >
-      {firstimage ? (
-        <Image
-          src={firstimage}
-          alt={title}
-          width={200}
-          height={200}
-          style={{ borderRadius: "0.5rem 0.5rem 0 0" }}
-          priority //LCP(Largest Contentful Paint)
-        />
-      ) : (
-        <DefaultImg />
-      )}
-      <ContentBox title={title} addr1={addr1} />
-    </StyledCard>
+    <Suspense fallback={<SkeletonImg />}>
+      <StyledCard
+        onClick={() =>
+          openModal({ contentId: contentid, contentTypeId: contenttypeid })
+        }
+      >
+        {firstimage ? (
+          <Image
+            src={firstimage}
+            alt={title}
+            width={200}
+            height={200}
+            style={{ borderRadius: "0.5rem 0.5rem 0 0" }}
+            priority //LCP(Largest Contentful Paint)
+          />
+        ) : (
+          <DefaultImg />
+        )}
+        <ContentBox title={title} addr1={addr1} />
+      </StyledCard>
+    </Suspense>
   );
 };
 
