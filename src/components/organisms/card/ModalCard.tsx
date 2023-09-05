@@ -1,3 +1,4 @@
+import GlitchLogo from "@/components/atoms/logo/GlitchLogo";
 import Modal from "@/components/atoms/modal/Modal";
 import Overlay from "@/components/atoms/modal/Overlay";
 import DetailCard from "@/components/molecules/card/DetailCard";
@@ -9,7 +10,7 @@ import {
   useUseInfo,
 } from "@/hooks/useTourInfo";
 import { modalState } from "@/recoil/atoms/modalState";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 const ModalCard = ({ contentId }: { contentId: string }) => {
@@ -52,13 +53,15 @@ const ModalCard = ({ contentId }: { contentId: string }) => {
       {modal.isOpen && modal.contentId === contentId && (
         <>
           <Modal>
-            <DetailCard
-              detailInfo={detailInfo}
-              courses={courses}
-              useInfos={useInfos}
-              petInfo={petInfo}
-              barrierFree={barrierFree}
-            />
+            <Suspense fallback={<GlitchLogo />}>
+              <DetailCard
+                detailInfo={detailInfo}
+                courses={courses}
+                useInfos={useInfos}
+                petInfo={petInfo}
+                barrierFree={barrierFree}
+              />
+            </Suspense>
           </Modal>
           <Overlay />
         </>
