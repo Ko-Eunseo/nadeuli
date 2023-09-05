@@ -6,12 +6,14 @@ export const StyledTabHead = styled.nav`
   background-color: ${colors.green};
   border-radius: 2rem;
   width: fit-content;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 0 1rem;
 
   @media (max-width: 500px) {
     border-radius: 0;
     padding: 0;
+    width: 100%;
+    justify-content: center;
   }
 `;
 
@@ -28,7 +30,7 @@ export const StyledTabBody = styled.div`
 
   @media (max-width: 800px) {
     border-radius: 0.5rem;
-    padding-top: 50px;
+    padding-top: 1rem;
   }
 `;
 

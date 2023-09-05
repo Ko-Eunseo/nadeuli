@@ -11,7 +11,7 @@ const StyledIconBtn = styled.button`
   transition: 0.5s;
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.1;
     cursor: not-allowed;
   }
 

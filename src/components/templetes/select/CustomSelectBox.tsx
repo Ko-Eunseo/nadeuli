@@ -12,7 +12,7 @@ import { IconContext } from "react-icons";
 import useDrag from "@/hooks/useDrag";
 import Button from "@/components/atoms/buttons/basicBtn/Button";
 import { colors } from "@/styles/colors";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { areaSelector } from "@/recoil/selectors/areaSelector";
 import { Area } from "@/types/area";
 

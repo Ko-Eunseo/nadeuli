@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     margin-top: -4px; //알수없는 마진탑 없애기 위함
     padding: 0;
+    overflow-x: hidden;
   }
   
   #root {

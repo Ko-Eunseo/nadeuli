@@ -9,13 +9,19 @@ export const SelectBox = styled(CenterBox)`
   background-color: ${colors.background};
   border-radius: 2rem;
   margin-bottom: 3rem;
+  margin: 0 auto;
+  max-width: 96%;
+
+  @media (min-width: 601px) and (max-width: 800px) {
+    flex-wrap: wrap;
+    height: 20vw;
+    max-width: 550px;
+  }
 
   @media (max-width: 600px) {
     flex-wrap: wrap;
-    justify-content: flex-start;
-    background-color: transparent;
-    margin: 0 auto;
-    max-width: 400px;
+    max-width: 55vw;
+    /* background-color: transparent; */
   }
 `;
 
@@ -26,7 +32,7 @@ export const SelectComment = styled.p`
 
   @media (max-width: 600px) {
     margin: 0.5rem;
-    color: white;
+    /* color: white; */
   }
 `;
 

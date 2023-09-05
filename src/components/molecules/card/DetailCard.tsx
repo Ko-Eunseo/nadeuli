@@ -51,7 +51,7 @@ const DetailCard = ({
               priority
             />
           ) : (
-            <DefaultImg />
+            <DefaultImg $width={"300px"} $height={"300px"} />
           )}
           <ContentBox title={detailInfo?.title} addr1={detailInfo?.addr1} />
         </LeftSide>
