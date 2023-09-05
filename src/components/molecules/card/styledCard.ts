@@ -6,6 +6,11 @@ export const StyledCard = styled.div`
   width: 200px;
   border-radius: 0.5rem;
   background-color: #ffffff;
+  &:hover {
+    transform: translate(0, -0.5rem);
+    transition: 0.5s;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
 `;
 
 export const CardWrapper = styled(CustomScrollbar)`
@@ -48,7 +53,6 @@ export const CardGrid = styled.div`
   }
 `;
 
-// detail card : @todo 반응형 대응하기
 export const StyledDetailCard = styled(CustomScrollbar)`
   display: flex;
   padding: 1rem;
