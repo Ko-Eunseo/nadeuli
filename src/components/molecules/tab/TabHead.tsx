@@ -21,7 +21,7 @@ const TabHead = ({
       {tabList?.map(({ code, name, label, icon }, i) => {
         return (
           <TabItem
-            key={code}
+            key={"catagory" + code}
             label={name}
             isActive={curTab.code ? curTab.code === code : i === 0}
             Icon={icon}

@@ -9,6 +9,7 @@ export const StyledTable = styled.table`
   font-size: ${sizes.md};
   font-weight: ${weights.thin};
   overflow: auto;
+  margin: 1rem auto;
 `;
 
 export const StyledTd = styled.td`

@@ -1,5 +1,5 @@
 import SelectItem from "@/components/atoms/selectItem/SelectItem";
-import { Label, StyledSelect } from "./styledSelect";
+import { Label, SelectList, StyledSelect } from "./styledSelect";
 import { OptionhandlerParam, TagType } from "@/types/type";
 import { Selected } from "@/recoil/atoms/selectState";
 
@@ -28,7 +28,7 @@ const SelectField = ({
     <>
       <Label>{label}</Label>
       <StyledSelect overflow={isOpen ? "visible" : "hidden"}>
-        {selectedValue ? (
+        {selectedValue ? ( //1. select default(selected value or Kor-label)
           <SelectItem
             option={selectionOption.value}
             handleSelectChange={handleSelectChange}
@@ -45,19 +45,21 @@ const SelectField = ({
             code={label}
           />
         )}
-        {options &&
-          options?.map((option: TagType, i) => {
-            return (
-              <SelectItem
-                key={i}
-                option={option.name}
-                handleSelectChange={handleSelectChange}
-                label={label}
-                code={(option?.code as string) || String(option?.id)}
-                {...rest}
-              />
-            );
-          })}
+        <SelectList>
+          {options && //2. open select options
+            options?.map((option: TagType, i) => {
+              return (
+                <SelectItem
+                  key={i}
+                  option={option.name}
+                  handleSelectChange={handleSelectChange}
+                  label={label}
+                  code={(option?.code as string) || String(option?.id)}
+                  {...rest}
+                />
+              );
+            })}
+        </SelectList>
       </StyledSelect>
     </>
   );

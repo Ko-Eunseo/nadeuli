@@ -1,7 +1,7 @@
 import IconBtn from "@/components/atoms/buttons/iconBtn/IconBtn";
 import { IconContext } from "react-icons";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
-import { BtnLayout } from "./styled";
+import { BtnLayout, LeftBtn, RightBtn } from "./styled";
 import { colors } from "@/styles/colors";
 
 const PageBtns = ({
@@ -17,18 +17,24 @@ const PageBtns = ({
 }) => {
   return (
     <BtnLayout>
-      <IconContext.Provider value={{ size: "2rem" }}>
-        <IconBtn
-          Icon={GrFormPreviousLink}
-          onClick={handlePrev}
-          disabled={pageNo === 1}
-        />
-        <IconBtn
-          Icon={GrFormNextLink}
-          onClick={handleNext}
-          disabled={pageNo === lastPage}
-        />
-      </IconContext.Provider>
+      <LeftBtn>
+        <IconContext.Provider value={{ size: "2rem" }}>
+          <IconBtn
+            Icon={GrFormPreviousLink}
+            onClick={handlePrev}
+            disabled={pageNo === 1}
+          />
+        </IconContext.Provider>
+      </LeftBtn>
+      <RightBtn>
+        <IconContext.Provider value={{ size: "2rem" }}>
+          <IconBtn
+            Icon={GrFormNextLink}
+            onClick={handleNext}
+            disabled={pageNo === lastPage}
+          />
+        </IconContext.Provider>
+      </RightBtn>
     </BtnLayout>
   );
 };

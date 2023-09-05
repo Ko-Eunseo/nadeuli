@@ -1,4 +1,5 @@
-import { styled } from "styled-components";
+import { colors } from "@/styles/colors";
+import { css, styled } from "styled-components";
 
 export const Box = styled.div`
   max-width: 600px;
@@ -9,8 +10,8 @@ export const Box = styled.div`
 
   @media (max-width: 600px) {
     flex-direction: column;
-    align-items: flex-start;
-    min-height: 30vh;
+    align-items: center;
+    min-height: 24vh;
   }
 `;
 
@@ -30,4 +31,19 @@ export const Padding = styled.div<{ $padding?: string }>`
 `;
 export const RelativeBox = styled.div`
   position: relative;
+`;
+
+//스크롤바: width를 줘야 스타일이 먹는다.
+export const CustomScrollbar = styled.div`
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background: ${colors.green};
+  }
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 10px;
+  }
 `;

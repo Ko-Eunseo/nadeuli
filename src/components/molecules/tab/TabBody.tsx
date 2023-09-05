@@ -3,8 +3,8 @@ import CardController from "@/components/organisms/card/CardController";
 import { CardGrid, CardWrapper } from "../card/styledCard";
 import { TabType } from "@/types/type";
 import { InitTab } from "@/hooks/useTab";
-import Char from "@/components/atoms/texts/Character";
 import { CenterBox } from "@/components/atoms/styles";
+import Nodata from "../noData/Nodata";
 
 const TabBody = ({
   curTab,
@@ -22,7 +22,7 @@ const TabBody = ({
           return (
             <StyledTabBox
               $active={curTab.code ? curTab.code === code : i === 0}
-              key={code}
+              key={"category" + code}
             >
               <CardWrapper>
                 {cardData.length > 0 ? (
@@ -31,9 +31,11 @@ const TabBody = ({
                   </CardGrid>
                 ) : (
                   <CenterBox>
-                    <Char size="md" weight="thin">
-                      관련 데이터가 없습니다.
-                    </Char>
+                    <Nodata
+                      text="관련 정보가 없습니다."
+                      size="md"
+                      weight="thin"
+                    />
                   </CenterBox>
                 )}
               </CardWrapper>

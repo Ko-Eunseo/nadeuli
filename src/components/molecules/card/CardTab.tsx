@@ -3,13 +3,19 @@ import { DetailData } from "./DetailCard";
 import useTab from "@/hooks/useTab";
 import { TabType } from "@/types/type";
 import TabHead from "../tab/TabHead";
-import { StyledCardTab, StyledCardTabBody } from "./styledCard";
+import {
+  StyledCardTab,
+  StyledCardTabBody,
+  StyledCourseCard,
+} from "./styledCard";
 import { StyledTabBox } from "../tab/styles";
 import { CourseTour } from "@/types/course";
 import Table from "../table/Table";
 import CourseCard from "./CourseCard";
 import PetCard from "./PetCard";
 import { PetTour } from "@/types/tourPet";
+import Nodata from "../noData/Nodata";
+import { CustomScrollbar } from "@/components/atoms/styles";
 
 const CardTab = ({
   detailInfo,
@@ -36,12 +42,14 @@ const CardTab = ({
       <TabHead tabList={cardTabList} setCurTab={setCurTab} curTab={curTab} />
       <StyledCardTabBody>
         <StyledTabBox $active={curTab.idx === 0}>
-          <Char size="md" weight="thin">
-            {detailInfo?.overview}
-          </Char>
-          <Char size="md" weight="thin">
-            {detailInfo?.tel && `tel: ` + detailInfo?.tel}
-          </Char>
+          <StyledCourseCard>
+            <Char size="md" weight="thin">
+              {detailInfo?.overview}
+            </Char>
+            <Char size="md" weight="thin">
+              {detailInfo?.tel && `tel: ` + detailInfo?.tel}
+            </Char>
+          </StyledCourseCard>
         </StyledTabBox>
         <StyledTabBox $active={curTab.idx === 1}>
           {useInfos && <Table tContents={useInfos} />}
@@ -54,9 +62,7 @@ const CardTab = ({
               {barrierFree && <Table tContents={barrierFree} />}
             </>
           ) : (
-            <Char size="md" weight="thin">
-              상세정보없음
-            </Char>
+            <Nodata text="관련 정보가 없습니다." size="md" weight="thin" />
           )}
         </StyledTabBox>
       </StyledCardTabBody>
