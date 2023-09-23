@@ -29,16 +29,21 @@ const CourseSection = () => {
     categories && setCategory(categories?.response?.body?.items?.item);
   }, [categories, setCategory]);
 
-  const { tabState, tabList } = useTab({
+  const { tabList, handleCurTab, handleTabPage } = useTab({
     category,
     icons: icons,
   });
 
+  const curTab =
+    tabList.find((tab) => tab.isCurTab === true) ||
+    tabList.find((tab) => tab.idx === 0);
+
   const { data, isLoading } = useThemeCourseTour({
     areaCode: areaCode || 1,
-    cat2: (tabState.curTab.code as Cat2["code"]) || "C0112",
-    pageNo: pageNo || 1,
+    cat2: (curTab?.code as Cat2["code"]) || "C0112",
+    pageNo: curTab?.tabPage,
   });
+
   const cardData = getData(data);
   const lastPage = getLastPage(cardData.totalItemNo);
 
@@ -46,15 +51,23 @@ const CourseSection = () => {
     <RelativeBox>
       <>
         <PageBtns
-          pageNo={pageNo}
+          pageNo={curTab?.tabPage}
           lastPage={lastPage}
-          handlePrev={handlePrev}
-          handleNext={handleNext}
+          handlePrev={() => {
+            if (pageNo > 1) {
+              handlePrev();
+              handleTabPage(curTab?.code, pageNo - 1);
+            }
+          }}
+          handleNext={() => {
+            handleNext();
+            handleTabPage(curTab?.code, pageNo + 1);
+          }}
         />
         <Tab
           isLoading={isLoading}
           tabList={tabList}
-          tabState={tabState}
+          handleCurTab={handleCurTab}
           cardData={cardData.itemList}
         />
       </>

@@ -1,8 +1,8 @@
 import { selector } from "recoil";
-import { recoilTabState } from "../atoms/tabState";
+import { allTabState } from "../atoms/tabState";
 
 export const tabSelector = selector({
-  key: "tabSelector",
-  get: ({ get }) => get(recoilTabState),
-  set: ({ set }, newValue) => set(recoilTabState, newValue),
+  key: "allTabSelector",
+  get: ({ get }) => get(allTabState),
+  set: ({ set }, newValue) => set(allTabState, newValue),
 });

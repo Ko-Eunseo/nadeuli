@@ -2,27 +2,29 @@ import { StyledTabBody, StyledTabBox } from "./styles";
 import CardController from "@/components/organisms/card/CardController";
 import { CardGrid, CardWrapper } from "../card/styledCard";
 import { TabType } from "@/types/type";
-import { InitTab } from "@/hooks/useTab";
 import { CenterBox } from "@/components/atoms/styles";
 import Nodata from "../noData/Nodata";
+import { InitAllTab } from "@/recoil/atoms/tabState";
 
 const TabBody = ({
-  curTab,
+  allTab,
   tabCategory,
   cardData,
 }: {
-  curTab: InitTab;
+  allTab: InitAllTab[];
   tabCategory: TabType[];
   cardData: any;
 }) => {
+  const currentTabCode = allTab.find((tab) => tab.isCurTab)?.code || "";
+
   return (
     <>
       <StyledTabBody>
-        {tabCategory?.map(({ code, name, label }, i) => {
+        {tabCategory?.map(({ code }, i) => {
           return (
             <StyledTabBox
-              $active={curTab.code ? curTab.code === code : i === 0}
-              key={"category" + code}
+              $active={currentTabCode ? currentTabCode === code : i === 0}
+              key={"categoryBody" + code}
             >
               <CardWrapper>
                 {cardData.length > 0 ? (

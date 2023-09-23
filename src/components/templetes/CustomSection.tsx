@@ -50,8 +50,8 @@ const CustomSection = ({ isSelect }: { isSelect: boolean }) => {
       <PageBtns
         pageNo={pageNo}
         lastPage={lastPage}
-        handlePrev={handlePrev}
-        handleNext={handleNext}
+        handlePrev={() => handlePrev(pageNo)}
+        handleNext={() => handleNext(pageNo)}
       />
       <CardWrapper>
         <CardList cardData={cardData?.itemList} />

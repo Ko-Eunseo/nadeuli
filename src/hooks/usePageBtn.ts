@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const usePageBtn = () => {
   const [pageNo, setPageNo] = useState(1);
+
   const handlePrev = () => {
     setPageNo(pageNo - 1);
   };
