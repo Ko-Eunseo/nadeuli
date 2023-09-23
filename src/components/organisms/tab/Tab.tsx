@@ -1,29 +1,22 @@
 import TabBody from "@/components/molecules/tab/TabBody";
 import TabHead from "@/components/molecules/tab/TabHead";
 import { StyledTab } from "./styles";
-import { TabType } from "@/types/type";
-import { InitTab } from "@/hooks/useTab";
+import { InitAllTab } from "@/recoil/atoms/tabState";
 
 const Tab = ({
   tabList,
-  tabState,
+  handleCurTab,
   cardData,
-  isLoading,
 }: {
-  tabList: TabType[];
-  tabState: {
-    setCurTab: React.Dispatch<React.SetStateAction<InitTab>>;
-    curTab: InitTab;
-  };
+  tabList: InitAllTab[];
+  handleCurTab: (tab: InitAllTab) => void;
   cardData: any;
   isLoading: boolean;
 }) => {
-  const { setCurTab, curTab } = tabState;
-
   return (
     <StyledTab>
-      <TabHead tabList={tabList} setCurTab={setCurTab} curTab={curTab} />
-      <TabBody tabCategory={tabList} curTab={curTab} cardData={cardData} />
+      <TabHead handleCurTab={handleCurTab} tabList={tabList} />
+      <TabBody tabCategory={tabList} allTab={tabList} cardData={cardData} />
     </StyledTab>
   );
 };

@@ -1,21 +1,20 @@
 import Char from "@/components/atoms/texts/Character";
 import { DetailData } from "./DetailCard";
-import useTab from "@/hooks/useTab";
 import { TabType } from "@/types/type";
-import TabHead from "../tab/TabHead";
 import {
   StyledCardTab,
   StyledCardTabBody,
   StyledCourseCard,
 } from "./styledCard";
-import { StyledTabBox } from "../tab/styles";
+import { StyledTabBox, StyledTabHead } from "../tab/styles";
 import { CourseTour } from "@/types/course";
 import Table from "../table/Table";
 import CourseCard from "./CourseCard";
 import PetCard from "./PetCard";
 import { PetTour } from "@/types/tourPet";
 import Nodata from "../noData/Nodata";
-import { CustomScrollbar } from "@/components/atoms/styles";
+import useCardTab, { InitTab } from "@/hooks/useCardTab";
+import TabItem from "@/components/atoms/tab/tabItem";
 
 const CardTab = ({
   detailInfo,
@@ -32,14 +31,29 @@ const CardTab = ({
   petInfo: PetTour;
   barrierFree: any;
 }) => {
-  const { tabState, tabList } = useTab({
+  const { tabState, tabList } = useCardTab({
     category: cardTabList,
   });
   const { curTab, setCurTab } = tabState;
 
+  const handleTab = ({ name, code, idx }: InitTab) => {
+    setCurTab({ name, code, idx });
+  };
+
   return (
     <StyledCardTab>
-      <TabHead tabList={cardTabList} setCurTab={setCurTab} curTab={curTab} />
+      <StyledTabHead>
+        {tabList?.map(({ code, name }, i) => {
+          return (
+            <TabItem
+              key={"cardTab" + code}
+              label={name}
+              isActive={curTab.code ? curTab.code === code : i === 0}
+              onClick={() => handleTab({ name, code, idx: i })}
+            />
+          );
+        })}
+      </StyledTabHead>
       <StyledCardTabBody>
         <StyledTabBox $active={curTab.idx === 0}>
           <StyledCourseCard>

@@ -1,12 +1,12 @@
 import { TabType } from "@/types/type";
 import { atom } from "recoil";
+export type InitAllTab = Pick<TabType, "name" | "code" | "icon"> & {
+  idx: number;
+} & {
+  tabPage: number;
+} & { isCurTab: boolean };
 
-interface TabState {
-  curTab: TabType;
-  tabData: {};
-}
-
-export const recoilTabState = atom<TabState[]>({
-  key: "tabState",
+export const allTabState = atom<InitAllTab[]>({
+  key: "allTabState",
   default: [],
 });

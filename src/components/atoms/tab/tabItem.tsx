@@ -3,7 +3,7 @@ import { IconContext } from "react-icons";
 import { TabType } from "@/types/type";
 
 type TabItemProps = {
-  Icon: TabType["icon"];
+  Icon?: TabType["icon"];
   label: TabType["name"];
   onClick: () => void;
   isActive: boolean;
